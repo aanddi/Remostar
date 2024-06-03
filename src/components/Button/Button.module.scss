@@ -1,0 +1,11 @@
+@import '/src/styles/variables.scss';
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 7px;
+  font-size: 14px;
+  min-width: 120px;
+}
