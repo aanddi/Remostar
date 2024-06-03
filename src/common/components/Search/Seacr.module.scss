@@ -1,0 +1,56 @@
+@import '/src/styles/variables.scss';
+
+.search {
+  border-radius: 20px;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+  margin: 24px 0;
+
+  &:hover {
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.25);
+  }
+
+  .wrapper {
+    padding: 40px;
+  }
+
+  .title {
+    font-weight: 800;
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .filter {
+      min-width: 60px;
+    }
+  }
+
+  .categories {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+
+    .item {
+      border-radius: 20px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .active {
+      background-color: $primary;
+      color: $white;
+
+      &:hover {
+        background-color: $primary !important;
+        color: $white !important;
+      }
+    }
+  }
+}
