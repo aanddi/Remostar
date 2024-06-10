@@ -25,6 +25,11 @@
     align-items: center;
     gap: 16px;
 
+    .iconSearch {
+      color: $gray;
+      margin-right: 10px;
+    }
+
     .filter {
       min-width: 60px;
     }

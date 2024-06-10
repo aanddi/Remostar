@@ -1,22 +1,50 @@
-import React, { ReactNode } from 'react';
+import React, { useCallback } from 'react';
 import { Typography } from 'antd';
+import { MdSort } from 'react-icons/md';
+import { Pagination, Select } from '@components';
 import styles from './Ribbon.module.scss';
+import IribbonProps from './type';
 
-interface IribbonProps {
-  children: ReactNode;
-  fullCount: number;
-}
+const Ribbon = ({
+  children,
+  listCount,
+  classNameList,
+  pagination,
+  totalPage,
+  sortOptions,
+  onSort,
+}: IribbonProps) => {
+  const handleSort = useCallback(
+    (value: string) => {
+      onSort?.(value);
+    },
+    [onSort],
+  );
 
-const Ribbon = ({ children, fullCount }: IribbonProps) => {
   return (
     <section className={styles.ribbon}>
       <div className="container">
         <div className={styles.wrapper}>
-          <Typography.Title level={5} className={styles.count}>
-            Найдено: {fullCount}
-          </Typography.Title>
-          <div className={styles.list}>{children}</div>
+          <div className={styles.header}>
+            <Typography.Title level={5} className={styles.count}>
+              {listCount} найдено
+            </Typography.Title>
+            {sortOptions && (
+              <div className={styles.sort}>
+                <MdSort size={20} className={styles.icon} />
+                <Select
+                  variant="borderless"
+                  defaultValue={sortOptions[0]}
+                  options={sortOptions}
+                  className={styles.selectSort}
+                  onChange={(value) => handleSort(value)}
+                />
+              </div>
+            )}
+          </div>
+          <div className={`${classNameList}`}>{children}</div>
         </div>
+        {pagination && <Pagination defaultCurrent={1} total={totalPage} />}
       </div>
     </section>
   );

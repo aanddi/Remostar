@@ -26,7 +26,7 @@ const SearchOwners = () => {
           categories={categoriesMock}
         />
       </div>
-      <Ribbon fullCount={1}>
+      <Ribbon listCount={1}>
         <AnnouncementCard />
       </Ribbon>
     </div>

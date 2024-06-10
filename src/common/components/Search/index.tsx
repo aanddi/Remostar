@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { Button, Input } from '@components';
 import { Controller, useForm } from 'react-hook-form';
-import { Typography } from 'antd';
-
-import { Settings2, Search as SearchIcon } from 'lucide-react';
+import { Tooltip, Typography } from 'antd';
+import { FiSearch } from 'react-icons/fi';
+import { LuSettings2 } from 'react-icons/lu';
 import styles from './Seacr.module.scss';
 import { ISearchProps } from './type';
 
@@ -51,15 +51,17 @@ const Search = ({
                 placeholder="Поиск"
                 size="large"
                 allowClear
-                prefix={<SearchIcon color="#828282" size={16} />}
+                prefix={<FiSearch className={styles.iconSearch} size={18} />}
                 {...field}
               />
             )}
           />
           {onOpenFilter && (
-            <Button type="default" size="large" className={styles.filter} onClick={handleFilter}>
-              <Settings2 size={20} />
-            </Button>
+            <Tooltip title="Фильтр">
+              <Button type="default" size="large" className={styles.filter} onClick={handleFilter}>
+                <LuSettings2 size={20} />
+              </Button>
+            </Tooltip>
           )}
           <Button type="primary" size="large" onClick={handleSearch}>
             Найти
