@@ -137,3 +137,4 @@ All components in the project are created as functional component. Continuity sh
 
 [Erdoğan BULUT](https://github.com/erdoganbulut/)
 [Ömer AYYILDIZ](https://github.com/omerayyildiz)
+
