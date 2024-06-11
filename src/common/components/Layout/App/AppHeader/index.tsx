@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 import { LuMapPin } from 'react-icons/lu';
 import { FiLogIn } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from '@assets/Logo.svg?react';
 import styles from './AppHeader.module.scss';
 import menuData from './menu-data';
 
@@ -25,9 +26,9 @@ const AppHeader = () => {
       <div className="container">
         <div className={styles.body}>
           <div className={styles.info}>
-            <div className={styles.logo}>
-              <img src="src/assets/Logo.svg" alt="Логотип" className="logo" />
-            </div>
+            <Link to="/" className={styles.logo}>
+              <Logo />
+            </Link>
             <nav className={styles.menu}>
               {menuData.map((item) => (
                 <Link
