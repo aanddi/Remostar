@@ -1,6 +1,11 @@
 import React from 'react';
 
 import { Layout } from 'antd';
+import Logo from '@assets/Logo-white.svg?react';
+import Telegram from '@assets/social/telegram.svg?react';
+import Vk from '@assets/social/vkontakte.svg?react';
+import Dzen from '@assets/social/dzen.svg?react';
+import Od from '@assets/social/od.svg?react';
 
 import { Link } from 'react-router-dom';
 import styles from './AppFooter.module.scss';
@@ -12,9 +17,9 @@ const AppFooter = () => (
     <div className="container">
       <div className={styles.body}>
         <div className={styles.content}>
-          <div className={styles.logo}>
-            <img src="src/assets/Logo-white.svg" alt="Логотип" />
-          </div>
+          <Link to="/" className={styles.logo}>
+            <Logo />
+          </Link>
           <div className={styles.info}>
             <p className={styles.team}>
               © 2024 Ремостар. <Link to="https://github.com/aanddi/Remostar">ANVAL Team</Link>
@@ -32,16 +37,16 @@ const AppFooter = () => (
         </div>
         <div className={styles.social}>
           <Link to="/">
-            <img src="src/assets/social/telegram.svg" alt="Телеграм" />
+            <Telegram />
           </Link>
           <Link to="/">
-            <img src="src/assets/social/vkontakte.svg" alt="Вконтакте" />
+            <Vk />
           </Link>
           <Link to="/">
-            <img src="src/assets/social/od.svg" alt="Одноклассники" />
+            <Od />
           </Link>
           <Link to="/">
-            <img src="src/assets/social/dzen.svg" alt="Яндекс Дзен" />
+            <Dzen />
           </Link>
         </div>
       </div>
