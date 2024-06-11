@@ -1,6 +1,10 @@
 import { ContractorsCard, Ribbon, Search } from '@common';
+
 import React, { useCallback } from 'react';
-import categoriesMock from './mock';
+import styles from './SearchContractors.module.scss';
+import responseGetContarctors from './mock';
+import PopularContractors from './components/PopularContractors';
+import { categories, sortOptions } from './constans';
 
 const SearchContractors = () => {
   const handleOpenFilter = useCallback(() => {
@@ -15,19 +19,35 @@ const SearchContractors = () => {
     console.log(data);
   }, []);
 
+  const handleSort = useCallback((value: string) => {
+    console.log(value);
+  }, []);
+
   return (
-    <div>
+    <div className={styles.contartors}>
       <div className="container">
         <Search
           title="Поиск подрядчиков"
           onSearch={handleSearch}
           onOpenFilter={handleOpenFilter}
           onSearchCategories={handleSearchCategories}
-          categories={categoriesMock}
+          categories={categories}
         />
       </div>
-      <Ribbon fullCount={1}>
-        <ContractorsCard />
+      <Ribbon
+        pagination
+        sortOptions={sortOptions}
+        onSorting={handleSort}
+        totalPage={responseGetContarctors.totalPage}
+        listCount={responseGetContarctors.countItems}
+        classNameList={styles.listConractors}
+      >
+        <div className={styles.contractors}>
+          {responseGetContarctors.contartors.map((contartor) => {
+            return <ContractorsCard key={contartor.id} contractor={contartor} />;
+          })}
+        </div>
+        <PopularContractors contractors={responseGetContarctors.popularContartors} />
       </Ribbon>
     </div>
   );

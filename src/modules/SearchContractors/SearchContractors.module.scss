@@ -1,0 +1,17 @@
+.contartors {
+  .listConractors {
+    display: flex;
+    gap: 24px
+  }
+
+  .contractors {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .aside {
+    display: flex;
+    width: 400px;
+  }
+}

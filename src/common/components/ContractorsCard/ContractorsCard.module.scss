@@ -1,1 +1,194 @@
-.card {}
+@import '/src/styles/variables.scss';
+
+.card {
+  background-color: $white;
+  border-radius: 10px;
+
+  .wrapper {
+    padding: 30px;
+    position: relative;
+  }
+
+  .actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    color: $gray;
+
+    .actionItem {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $primary;
+      }
+
+      .favorite {
+        display: flex;
+        width: 24px;
+        stroke-width: 45;
+        fill: $white;
+
+        &:hover {
+          fill: $primary;
+        }
+      }
+    }
+  }
+
+  .header {
+    display: flex;
+    gap: 32px;
+  }
+
+  .info {
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 16px;
+
+      .name {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 800;
+        font-size: 18px;
+
+        svg {
+          color: $primary;
+        }
+
+        a {
+          color: $black;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        span {
+          color: $primary;
+        }
+      }
+
+      .reviews {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-weight: 600;
+
+        .reviewsItem {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+
+          .star {
+            color: $orange;
+          }
+
+          .comment {
+            color: $primary;
+          }
+
+          .commentLink {
+            color: $black;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .infoScoupe {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .infoItem {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+        color: $gray;
+      }
+    }
+  }
+
+  .desc {
+    margin: 16px 0;
+    font-size: 15px;
+    line-height: 150%;
+    text-align: justify;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .services {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 16px 0;
+
+    .title {
+      font-weight: 700;
+
+      span {
+        background-color: $blue-light;
+        padding: 5px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 800;
+        color: $primary;
+      }
+    }
+
+    .service {
+      display: flex;
+      justify-content: space-between;
+      background-color: $blue-light;
+      padding: 10px 15px;
+      border-radius: 10px;
+      transition: all 0.4s ease;
+
+      &:hover {
+        background-color: darken($blue-light, 4%);
+        cursor: pointer;
+      }
+
+      .name {
+        font-weight: 500;
+      }
+
+      .salary {
+        font-weight: 700;
+      }
+    }
+
+    .servicesMore {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .footer {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}

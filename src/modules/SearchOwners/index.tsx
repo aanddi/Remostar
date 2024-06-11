@@ -1,6 +1,8 @@
 import { Search, Ribbon, AnnouncementCard } from '@common';
 import React, { useCallback } from 'react';
-import categoriesMock from './mock';
+import { categories, sortOptions } from './constans';
+import responseGetAnnouncements from './mock';
+import styles from './SearchOwners.module.scss';
 
 const SearchOwners = () => {
   const handleOpenFilter = useCallback(() => {
@@ -15,6 +17,10 @@ const SearchOwners = () => {
     console.log(data);
   }, []);
 
+  const handleSorting = useCallback((value: string) => {
+    console.log(value);
+  }, []);
+
   return (
     <div>
       <div className="container">
@@ -23,11 +29,20 @@ const SearchOwners = () => {
           onOpenFilter={handleOpenFilter}
           onSearch={handleSearch}
           onSearchCategories={handleSearchCategories}
-          categories={categoriesMock}
+          categories={categories}
         />
       </div>
-      <Ribbon fullCount={1}>
-        <AnnouncementCard />
+      <Ribbon
+        pagination
+        sortOptions={sortOptions}
+        onSorting={handleSorting}
+        totalPage={responseGetAnnouncements.totalPage}
+        listCount={responseGetAnnouncements.countItems}
+        classNameList={styles.listAnnouncements}
+      >
+        {responseGetAnnouncements.announcements.map((announcement) => {
+          return <AnnouncementCard data={announcement} />;
+        })}
       </Ribbon>
     </div>
   );

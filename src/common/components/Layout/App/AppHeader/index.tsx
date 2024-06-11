@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { Button } from '@components';
 import { Layout } from 'antd';
-import { LogIn, MapPin } from 'lucide-react';
+import { LuMapPin } from 'react-icons/lu';
+import { FiLogIn } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './AppHeader.module.scss';
 import menuData from './menu-data';
@@ -44,7 +45,7 @@ const AppHeader = () => {
               type="text"
               size="large"
               className={styles.city}
-              icon={<MapPin size={18} />}
+              icon={<LuMapPin size={18} />}
               onClick={handleModalCity}
             >
               Симферополь
@@ -53,7 +54,7 @@ const AppHeader = () => {
               type="text"
               size="large"
               className={styles.login}
-              icon={<LogIn size={18} />}
+              icon={<FiLogIn size={18} />}
               onClick={handleModalLogin}
             >
               Войти
