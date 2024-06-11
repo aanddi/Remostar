@@ -36,11 +36,11 @@ const SearchContractors = () => {
       </div>
       <Ribbon
         pagination
-        totalPage={responseGetContarctors.totalPage}
-        listCount={responseGetContarctors.contartorsCount}
-        classNameList={styles.listConractors}
         sortOptions={sortOptions}
-        onSort={handleSort}
+        onSorting={handleSort}
+        totalPage={responseGetContarctors.totalPage}
+        listCount={responseGetContarctors.countItems}
+        classNameList={styles.listConractors}
       >
         <div className={styles.contractors}>
           {responseGetContarctors.contartors.map((contartor) => {

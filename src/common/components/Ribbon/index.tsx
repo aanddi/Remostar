@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Typography } from 'antd';
-import { MdSort } from 'react-icons/md';
+import { TbArrowsSort } from 'react-icons/tb';
 import { Pagination, Select } from '@components';
 import styles from './Ribbon.module.scss';
 import IribbonProps from './type';
@@ -12,13 +12,13 @@ const Ribbon = ({
   pagination,
   totalPage,
   sortOptions,
-  onSort,
+  onSorting,
 }: IribbonProps) => {
   const handleSort = useCallback(
     (value: string) => {
-      onSort?.(value);
+      onSorting?.(value);
     },
-    [onSort],
+    [onSorting],
   );
 
   return (
@@ -31,7 +31,7 @@ const Ribbon = ({
             </Typography.Title>
             {sortOptions && (
               <div className={styles.sort}>
-                <MdSort size={20} className={styles.icon} />
+                <TbArrowsSort size={20} className={styles.icon} />
                 <Select
                   variant="borderless"
                   defaultValue={sortOptions[0]}

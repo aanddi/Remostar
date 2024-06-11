@@ -19,13 +19,15 @@
       display: flex;
       align-items: center;
 
+
       .icon {
-        color: $gray;
+        color: $primary;
+        margin-right: -7px;
       }
     }
 
     .selectSort {
-      width: 160px;
+      width: max-content;
     }
   }
 

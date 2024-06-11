@@ -13,14 +13,17 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    color: $gray;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
 
+    color: $gray;
+
     .actionItem {
       display: flex;
       align-items: center;
+
       &:hover {
         color: $primary;
       }
@@ -28,7 +31,6 @@
       .favorite {
         display: flex;
         width: 24px;
-
         stroke-width: 45;
         fill: $white;
 
@@ -187,6 +189,6 @@
     margin-top: 32px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
   }
 }

@@ -88,7 +88,7 @@ const popularContartors = [
 const responseGetContarctors = {
   contartors,
   popularContartors,
-  contartorsCount: 123,
+  countItems: 123,
   totalPage: 500,
   // TODO: пагинация
 };

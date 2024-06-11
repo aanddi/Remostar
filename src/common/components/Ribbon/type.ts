@@ -8,7 +8,7 @@ interface IribbonProps {
   pagination?: boolean;
   totalPage?: number;
   sortOptions?: DefaultOptionType[];
-  onSort?: (value: string) => void;
+  onSorting?: (value: string) => void;
 }
 
 export default IribbonProps;
