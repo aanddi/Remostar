@@ -1,0 +1,4 @@
+const IMAGES_PREVIEW = 4;
+const IMAGE_SIZE = 80;
+
+export { IMAGES_PREVIEW, IMAGE_SIZE };

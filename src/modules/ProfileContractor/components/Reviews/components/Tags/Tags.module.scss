@@ -1,0 +1,44 @@
+@import '/src/styles/variables.scss';
+
+.tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  margin-top: 40px;
+
+  .tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 20px;
+
+    font-weight: 500;
+    color: $black;
+
+    background-color: $blue-light;
+    border-radius: 20px;
+    border-width: 2px;
+
+    &:hover {
+      cursor: pointer;
+      border: 2px solid $primary;
+    }
+
+    .count {
+      color: $gray;
+    }
+
+    &.active {
+      border: 2px solid $primary;
+    }
+  }
+
+  .reset {
+    &:hover {
+      text-decoration: underline;
+      background-color: transparent !important;
+    }
+  }
+}

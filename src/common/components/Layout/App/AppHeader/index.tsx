@@ -1,10 +1,15 @@
 import React, { useCallback } from 'react';
-import { Button } from '@components';
-import { Layout } from 'antd';
-import { LuMapPin } from 'react-icons/lu';
-import { FiLogIn } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router-dom';
+
+import { Button } from '@components';
+
 import Logo from '@assets/Logo.svg?react';
+
+import { Layout } from 'antd';
+
+import { FiLogIn } from 'react-icons/fi';
+import { LuMapPin } from 'react-icons/lu';
+
 import styles from './AppHeader.module.scss';
 import menuData from './menu-data';
 
@@ -44,7 +49,7 @@ const AppHeader = () => {
           <div className={styles.actions}>
             <Button
               type="text"
-              size="large"
+              size="middle"
               className={styles.city}
               icon={<LuMapPin size={18} />}
               onClick={handleModalCity}
@@ -53,7 +58,7 @@ const AppHeader = () => {
             </Button>
             <Button
               type="text"
-              size="large"
+              size="middle"
               className={styles.login}
               icon={<FiLogIn size={18} />}
               onClick={handleModalLogin}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button as UIButton, ButtonProps } from 'antd';
+import { ButtonProps, Button as UIButton } from 'antd';
 
 import styles from './Button.module.scss';
 import './Button.scss';
@@ -17,7 +17,7 @@ const Button = ({
     type={type}
     icon={icon && icon}
     disabled={disabled}
-    className={`btn ${styles.btn} ${type && `${styles[type]} btn-${type}`}  ${className}`}
+    className={`btn ${styles.btn} ${type && `${styles[type]} btn-${type}`} ${className}`}
     {...restProps}
   >
     {children}

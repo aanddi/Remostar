@@ -59,7 +59,7 @@
   }
 
   .gallery {
-    width: 420px;
+    width: 500px;
 
     @media (max-width: 995px) {
       width: 100%;
@@ -117,6 +117,7 @@
 
   .footer {
     margin-top: 16px;
+
     .user {
       display: flex;
       align-items: center;

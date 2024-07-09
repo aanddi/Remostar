@@ -6,3 +6,4 @@ export { default as Search } from './components/Search';
 export { default as Ribbon } from './components/Ribbon';
 export { default as ContractorsCard } from './components/ContractorsCard';
 export { default as AnnouncementCard } from './components/AnnouncementCard';
+export { default as Verify } from './components/Verify';

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Avatar, Tooltip, Typography } from 'antd';
-import { GoShieldCheck } from 'react-icons/go';
+
+import { Verify } from '@common';
+
+import { Avatar, Typography } from 'antd';
+
 import styles from './PopularContractors.module.scss';
 
 interface PopularContractorsProps {
@@ -24,11 +27,7 @@ const PopularContractors = ({ contractors }: PopularContractorsProps) => (
               <Avatar size={110} src={contractor.src} />
               <div className={styles.name}>
                 <span>{contractor.name}</span>
-                {contractor.verify && (
-                  <Tooltip title="Проверенный подрядчик">
-                    <GoShieldCheck strokeWidth={1} size={16} />
-                  </Tooltip>
-                )}
+                {contractor.verify && <Verify strokeWidth={1} size={16} />}
               </div>
             </div>
           </div>

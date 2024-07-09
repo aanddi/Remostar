@@ -1,3 +1,15 @@
+@import 'src/styles/variables.scss';
+
 .select {
-  
+  .ant-select-arrow {
+    transition: all 0.4s ease;
+  }
+
+  &.ant-select:not(.ant-select-open) .ant-select-arrow {
+    transform: rotate(0);
+  }
+
+  &.ant-select.ant-select-open .ant-select-arrow {
+    transform: rotate(180deg);
+  }
 }

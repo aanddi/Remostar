@@ -1,8 +1,11 @@
 import React, { PropsWithChildren } from 'react';
-import { FaArrowUp } from 'react-icons/fa6';
+
+import { AppFooter, AppHeader } from '@common';
+
 import { ConfigProvider, FloatButton, Layout } from 'antd';
 import ruRU from 'antd/locale/ru_RU';
-import { AppFooter, AppHeader } from '@common';
+
+import { FaArrowUp } from 'react-icons/fa6';
 
 import styles from './AppLayout.module.scss';
 

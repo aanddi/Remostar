@@ -1,12 +1,6 @@
-const formatPrice = (price: number) => {
-  const reversedPrice = price.toString().split('').reverse();
-  let formattedPrice = '';
-
-  reversedPrice.forEach((elem, index) => {
-    formattedPrice += elem + (index !== 0 && index % 3 === 0 ? ' ' : '');
-  });
-
-  return formattedPrice.split('').reverse().join('');
+const formatNumber = (price?: number) => {
+  if (!price) return '';
+  return new Intl.NumberFormat('ru-RU').format(price);
 };
 
-export default formatPrice;
+export default formatNumber;

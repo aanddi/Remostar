@@ -21,7 +21,7 @@ interface IContractorCard {
 }
 
 interface IContractorCardProps {
-  contractor?: IContractorCard;
+  data?: IContractorCard;
 }
 
 export default IContractorCardProps;

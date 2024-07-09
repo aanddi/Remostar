@@ -1,5 +1,6 @@
-import { DefaultOptionType } from 'antd/es/select';
 import { ReactNode } from 'react';
+
+import { DefaultOptionType } from 'antd/es/select';
 
 interface IribbonProps {
   children: ReactNode;

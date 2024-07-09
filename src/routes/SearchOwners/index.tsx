@@ -1,5 +1,6 @@
-import { SearchOwners } from '@modules';
 import React from 'react';
+
+import { SearchOwners } from '@modules';
 
 const CompaniesDictionaryPage = () => <SearchOwners />;
 

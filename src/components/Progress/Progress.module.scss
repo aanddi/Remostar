@@ -1,0 +1,11 @@
+.wrapper {
+  position: relative;
+
+  .label {
+    position: absolute;
+    top: -16px;
+    left: 0;
+
+    font-weight: 500;
+  }
+}

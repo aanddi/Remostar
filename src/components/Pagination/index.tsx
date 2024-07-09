@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pagination as UIPagination, PaginationProps } from 'antd';
+
+import { PaginationProps, Pagination as UIPagination } from 'antd';
 
 import './Pagination.scss';
 
