@@ -1,5 +1,6 @@
-import { AboutPlatform } from '@modules';
 import React from 'react';
+
+import { AboutPlatform } from '@modules';
 
 const AboutPlatformPage = () => <AboutPlatform />;
 

@@ -1,0 +1,32 @@
+@import '/src/styles/variables.scss';
+
+.statistics {
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    margin-top: 24px;
+  }
+
+  .total {
+    flex: 1 1 20%;
+
+    .grade {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .totalCount {
+      color: $gray;
+    }
+  }
+
+  .progress {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+    column-gap: 24px;
+  }
+}

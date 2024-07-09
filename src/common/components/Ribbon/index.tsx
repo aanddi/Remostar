@@ -1,7 +1,11 @@
 import React, { useCallback } from 'react';
-import { Typography } from 'antd';
-import { TbArrowsSort } from 'react-icons/tb';
+
 import { Pagination, Select } from '@components';
+
+import { Typography } from 'antd';
+
+import { TbArrowsSort } from 'react-icons/tb';
+
 import styles from './Ribbon.module.scss';
 import IribbonProps from './type';
 

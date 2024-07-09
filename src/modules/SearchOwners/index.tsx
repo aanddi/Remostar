@@ -1,8 +1,10 @@
-import { Search, Ribbon, AnnouncementCard } from '@common';
 import React, { useCallback } from 'react';
+
+import { AnnouncementCard, Ribbon, Search } from '@common';
+
+import styles from './SearchOwners.module.scss';
 import { categories, sortOptions } from './constans';
 import responseGetAnnouncements from './mock';
-import styles from './SearchOwners.module.scss';
 
 const SearchOwners = () => {
   const handleOpenFilter = useCallback(() => {

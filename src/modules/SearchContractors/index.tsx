@@ -1,10 +1,12 @@
+import React, { useCallback } from 'react';
+
 import { ContractorsCard, Ribbon, Search } from '@common';
 
-import React, { useCallback } from 'react';
-import styles from './SearchContractors.module.scss';
-import responseGetContarctors from './mock';
 import PopularContractors from './components/PopularContractors';
+
+import styles from './SearchContractors.module.scss';
 import { categories, sortOptions } from './constans';
+import responseGetContarctors from './mock';
 
 const SearchContractors = () => {
   const handleOpenFilter = useCallback(() => {
@@ -44,7 +46,7 @@ const SearchContractors = () => {
       >
         <div className={styles.contractors}>
           {responseGetContarctors.contartors.map((contartor) => {
-            return <ContractorsCard key={contartor.id} contractor={contartor} />;
+            return <ContractorsCard key={contartor.id} data={contartor} />;
           })}
         </div>
         <PopularContractors contractors={responseGetContarctors.popularContartors} />

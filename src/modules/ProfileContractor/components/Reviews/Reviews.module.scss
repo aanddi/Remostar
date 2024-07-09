@@ -1,0 +1,14 @@
+@import '/src/styles/variables.scss';
+
+.reviews {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sort {
+    margin-top: 24px;
+    width: 200px;
+  }
+}

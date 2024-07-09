@@ -1,16 +1,22 @@
 import React, { useMemo } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { Button } from '@components';
-import { GoShieldCheck } from 'react-icons/go';
+
+import { Verify } from '@common';
+
 import { Avatar, Tag, Tooltip, Typography } from 'antd';
-import { Link } from 'react-router-dom';
-import { FaStar, FaHeart } from 'react-icons/fa';
+
+import { FaHeart, FaStar } from 'react-icons/fa';
 import { LuMapPin } from 'react-icons/lu';
 import { MdOutlineBusinessCenter } from 'react-icons/md';
 import { TbMessage, TbMessageReport } from 'react-icons/tb';
+
 import styles from './ContractorsCard.module.scss';
 import IContractorCardProps from './type';
 
-const ContractorsCard = ({ contractor }: IContractorCardProps) => {
+const ContractorsCard = ({ data }: IContractorCardProps) => {
+  const navigate = useNavigate();
   const card = useMemo(
     () => (
       <div className={styles.card}>
@@ -32,22 +38,21 @@ const ContractorsCard = ({ contractor }: IContractorCardProps) => {
             <div className={styles.info}>
               <div className={styles.title}>
                 <div className={styles.name}>
-                  <Link to="/">{contractor?.name}</Link>
-                  {contractor?.verify && (
-                    <Tooltip title="Проверенный подрядчик">
-                      <GoShieldCheck strokeWidth={1} size={16} />
-                    </Tooltip>
-                  )}
+                  <Link to={`/contractor/${data?.id}`}>{data?.name}</Link>
+                  {data?.verify && <Verify strokeWidth={1} size={16} />}
                 </div>
                 <div className={styles.reviews}>
                   <div className={styles.reviewsItem}>
                     <FaStar size={18} className={styles.star} />
-                    {contractor?.reviews.starCount}
+                    {data?.reviews.starCount}
                   </div>
                   <div className={styles.reviewsItem}>
                     <TbMessage size={18} className={styles.comment} />
-                    <Link to="/" className={styles.commentLink}>
-                      {contractor?.reviews.commentCount} отзывов
+                    <Link
+                      to={`/contractor/${data?.id}/?view=reviews`}
+                      className={styles.commentLink}
+                    >
+                      {data?.reviews.commentCount} отзывов
                     </Link>
                   </div>
                 </div>
@@ -55,18 +60,18 @@ const ContractorsCard = ({ contractor }: IContractorCardProps) => {
               <div className={styles.infoScoupe}>
                 <div className={styles.infoItem}>
                   <LuMapPin size={15} />
-                  {contractor?.city}
+                  {data?.city}
                 </div>
                 <div className={styles.infoItem}>
                   <MdOutlineBusinessCenter size={15} />
-                  {contractor?.contartorType}
+                  {data?.contartorType}
                 </div>
               </div>
             </div>
           </div>
-          <div className={styles.desc}>{contractor?.desc}</div>
+          <div className={styles.desc}>{data?.desc}</div>
           <div className={styles.tags}>
-            {contractor?.tags.map((elem) => {
+            {data?.tags.map((elem) => {
               return (
                 <Tag key={elem.id} bordered={false} color="blue">
                   {elem.name}
@@ -76,9 +81,9 @@ const ContractorsCard = ({ contractor }: IContractorCardProps) => {
           </div>
           <div className={styles.services}>
             <Typography.Title level={5} className={styles.title}>
-              Услуги <span>{contractor?.services.count}</span>
+              Услуги <span>{data?.services.count}</span>
             </Typography.Title>
-            {contractor?.services.list.map((service) => {
+            {data?.services.list.map((service) => {
               return (
                 <div key={service.id} className={styles.service}>
                   <div className={styles.name}>{service.name}</div>
@@ -86,18 +91,20 @@ const ContractorsCard = ({ contractor }: IContractorCardProps) => {
                 </div>
               );
             })}
-            <Link to="/" className={styles.servicesMore}>
+            <Link to={`/contractor/${data?.id}/?view=services`} className={styles.servicesMore}>
               Еще услуги
             </Link>
           </div>
           <div className={styles.footer}>
-            <Button type="primary">Подробнее</Button>
+            <Button type="primary" onClick={() => navigate(`/contractor/${data?.id}`)}>
+              Подробнее
+            </Button>
             <Button type="default">Предложить заказ</Button>
           </div>
         </div>
       </div>
     ),
-    [contractor],
+    [data, navigate],
   );
 
   return card;

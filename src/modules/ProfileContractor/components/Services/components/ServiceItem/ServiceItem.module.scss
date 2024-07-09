@@ -1,0 +1,36 @@
+@import '/src/styles/variables.scss';
+
+.serviceItem {
+  background-color: $blue-light;
+  border-radius: 20px;
+
+  transition: all .4s ease;
+
+  &:hover {
+    background-color: darken($blue-light, 5%);
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .title,
+  .salary {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .salary {
+    text-align: center;
+    width: 200px;
+  }
+
+  .desc {
+    margin-top: 8px;
+    text-align: justify;
+    width: 80%;
+    color: darken($gray, 20%);
+  }
+}

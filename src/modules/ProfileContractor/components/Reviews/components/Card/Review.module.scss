@@ -1,0 +1,87 @@
+@import '/src/styles/variables.scss';
+
+.card {
+  border-bottom: 2px solid lighten($gray, 30%);
+  width: 80%;
+
+  .wrapper {
+    padding: 24px 0;
+  }
+
+  .header {
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .name {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .type {
+      margin-top: 4px;
+    }
+
+    .date,
+    .type {
+      color: $gray;
+    }
+  }
+
+  .body {
+    margin: 8px 0 32px 0;
+
+    .texts {
+      margin: 8px 0;
+
+      .textTitle {
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .gradeGroupe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+    column-gap: 24px;
+
+    width: 100%;
+  }
+
+  .gallery {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+
+    .restImages {
+      position: relative;
+
+      &:hover {
+        .restNumber {
+          opacity: 0;
+        }
+      }
+
+      .restNumber {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        pointer-events: none;
+        font-size: 18px;
+      }
+    }
+  }
+}

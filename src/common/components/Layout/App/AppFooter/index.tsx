@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Layout } from 'antd';
 import Logo from '@assets/Logo-white.svg?react';
-import Telegram from '@assets/social/telegram.svg?react';
-import Vk from '@assets/social/vkontakte.svg?react';
 import Dzen from '@assets/social/dzen.svg?react';
 import Od from '@assets/social/od.svg?react';
+import Telegram from '@assets/social/telegram.svg?react';
+import Vk from '@assets/social/vkontakte.svg?react';
 
-import { Link } from 'react-router-dom';
+import { Layout } from 'antd';
+
 import styles from './AppFooter.module.scss';
 
 const { Footer } = Layout;
