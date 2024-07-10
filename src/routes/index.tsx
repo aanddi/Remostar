@@ -1,5 +1,5 @@
-import React, { FunctionComponent, Suspense, lazy } from 'react';
-import { useRoutes } from 'react-router-dom';
+import React, { PropsWithChildren, Suspense, lazy, useLayoutEffect } from 'react';
+import { useLocation, useRoutes } from 'react-router-dom';
 
 import { AppLayout } from '@common';
 
@@ -10,7 +10,17 @@ const SearchContractorsPage = lazy(() => import('./SearchContractors'));
 const AboutPlatformPage = lazy(() => import('./AboutPlatform'));
 const ProfileContractorsPage = lazy(() => import('./ProfileContractor'));
 
-const Router: FunctionComponent = () => {
+export const ScrollToTop = ({ children }: PropsWithChildren) => {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return children;
+};
+
+const Router = () => {
   const routesSite = useRoutes([
     {
       path: '/',
@@ -69,11 +79,11 @@ const Router: FunctionComponent = () => {
   const profileContractors = useRoutes([{}]);
 
   return (
-    <>
+    <ScrollToTop>
       {routesSite}
       {profileOwner}
       {profileContractors}
-    </>
+    </ScrollToTop>
   );
 };
 

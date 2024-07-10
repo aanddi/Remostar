@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Button } from '@components';
 
@@ -9,32 +9,37 @@ import styles from './Tags.module.scss';
 import { ITags } from '../../type';
 
 const Tags = ({ data, activeTag, setActiveTag }: ITags) => {
-  return (
-    <div className={styles.tags}>
-      {data.map((tag) => {
-        return (
+  const tags = useMemo(
+    () => (
+      <div className={styles.tags}>
+        {data.map((tag) => {
+          return (
+            <Button
+              key={tag.id}
+              className={`${activeTag === tag.name && styles.active} ${styles.tag} `}
+              onClick={() => setActiveTag(tag.name)}
+            >
+              <span>{tag.name}</span>
+              <span className={styles.count}>{tag.count}</span>
+            </Button>
+          );
+        })}
+        {activeTag && (
           <Button
-            key={tag.id}
-            className={`${activeTag === tag.name && styles.active} ${styles.tag} `}
-            onClick={() => setActiveTag(tag.name)}
+            className={styles.reset}
+            type="text"
+            icon={<IoMdClose />}
+            onClick={() => setActiveTag('')}
           >
-            <span>{tag.name}</span>
-            <span className={styles.count}>{tag.count}</span>
+            Сбросить
           </Button>
-        );
-      })}
-      {activeTag && (
-        <Button
-          className={styles.reset}
-          type="text"
-          icon={<IoMdClose />}
-          onClick={() => setActiveTag('')}
-        >
-          Сбросить
-        </Button>
-      )}
-    </div>
+        )}
+      </div>
+    ),
+    [data, activeTag, setActiveTag],
   );
+
+  return tags;
 };
 
 export default Tags;
