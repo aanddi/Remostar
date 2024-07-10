@@ -9,6 +9,7 @@ export { default as Progress } from './Progress';
 export { default as Rate } from './Rate';
 export { default as Image } from './Image';
 export { default as Description } from './Description';
+export { default as GalleryThumbs } from './GalleryThumbs';
 
 export { default as Input } from './Form/Input';
 export { default as Select } from './Form/Select';

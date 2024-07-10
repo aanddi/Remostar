@@ -9,6 +9,7 @@ const SearchOwnersPage = lazy(() => import('./SearchOwners'));
 const SearchContractorsPage = lazy(() => import('./SearchContractors'));
 const AboutPlatformPage = lazy(() => import('./AboutPlatform'));
 const ProfileContractorsPage = lazy(() => import('./ProfileContractor'));
+const AboutTenderPage = lazy(() => import('./AboutTender'));
 
 export const ScrollToTop = ({ children }: PropsWithChildren) => {
   const location = useLocation();
@@ -68,7 +69,7 @@ const Router = () => {
       element: (
         <Suspense fallback={<Spin />}>
           <AppLayout>
-            <div>О Объекте</div>
+            <AboutTenderPage />
           </AppLayout>
         </Suspense>
       ),
