@@ -1,5 +1,9 @@
 @import '/src/styles/variables.scss';
 
+.title {
+  margin: 16px 0 !important;
+}
+
 .after {
   color: $gray;
 }

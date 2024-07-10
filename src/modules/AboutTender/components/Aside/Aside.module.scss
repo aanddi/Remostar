@@ -1,0 +1,107 @@
+@import '/src/styles/variables.scss';
+
+.aside {
+  .content {
+    position: sticky;
+    top: 15px;
+  }
+
+  .card {
+    box-shadow: 0px 4px 35px -4px rgba(34, 60, 80, 0.15);
+    border-radius: 20px;
+  }
+
+  .wrapper {
+    padding: 25px;
+
+    & > * {
+      margin-top: 16px;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .salary {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .adress {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: $gray;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .button {
+    min-width: 100%;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+
+    margin-top: 16px;
+
+    box-shadow: 0px 4px 35px -4px rgba(34, 60, 80, 0.15);
+    border-radius: 20px;
+
+    & > *:not(:last-child) {
+      border-right: 2px solid lighten($gray, 30%);
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      flex: 1 1 50%;
+      gap: 8px;
+      padding: 20px;
+
+      &:hover {
+        cursor: pointer;
+
+        .icon,
+        .favorite {
+          color: lighten($gray, 15%);
+        }
+
+        span {
+          color: lighten($gray, 15%);
+        }
+      }
+
+      .icon,
+      .favorite {
+        color: $gray;
+      }
+
+      .favorite {
+        display: flex;
+        width: 24px;
+        stroke-width: 45;
+        fill: transparent;
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: 600;
+        color: $gray;
+      }
+    }
+  }
+}

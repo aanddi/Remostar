@@ -21,7 +21,7 @@ const Title = ({
   afterContent,
   ...restProps
 }: ITitleProps) => (
-  <Typography.Title level={level} className={`title ${className}`} {...restProps}>
+  <Typography.Title level={level} className={`title ${styles.title} ${className}`} {...restProps}>
     {title}{' '}
     {afterContent && <span className={`${styles.after} ${classNameAfter}`}>{afterContent}</span>}
   </Typography.Title>

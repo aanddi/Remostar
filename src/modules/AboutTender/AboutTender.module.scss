@@ -1,0 +1,25 @@
+@import '/src/styles/variables.scss';
+
+.tender {
+  margin-bottom: 80px;
+
+  .date {
+    margin: 24px 0 8px 0;
+    color: $gray;
+    font-size: 15px;
+  }
+
+  .content {
+    margin-top: 24px;
+    display: flex;
+    gap: 32px;
+
+    .body {
+      flex: 1 1 70%;
+    }
+
+    .aside {
+      flex: 1 1 30%;
+    }
+  }
+}
