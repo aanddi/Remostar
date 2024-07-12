@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Button, Description } from '@components';
+import { Button } from '@components';
 
 import formatNumber from '@common/utils/format-price';
 
-import { Avatar, Image, Watermark } from 'antd';
+import { Avatar, Descriptions, Image, Watermark } from 'antd';
 
 import { FaUser } from 'react-icons/fa';
 
@@ -50,23 +50,13 @@ const Card = ({ data }: { data: IPortfolioCard }) => {
               </div>
               <div className={styles.budget}>{formatNumber(data.budget)} ₽</div>
             </div>
-            <div className={styles.info}>
-              <Description labelWidth={120} label="Тип объекта">
-                {data.type}
-              </Description>
-              <Description labelWidth={120} label="Кол-во комнат">
-                {data.rooms}
-              </Description>
-              <Description labelWidth={120} label="Метраж">
-                {data.footage}
-              </Description>
-              <Description labelWidth={120} label="Сроки">
-                {data.time}
-              </Description>
-              <Description labelWidth={120} label="Категория">
-                {data.categoryRepair}
-              </Description>
-            </div>
+            <Descriptions className={styles.info} column={2} size="small">
+              <Descriptions.Item label="Тип объекта">{data.type}</Descriptions.Item>
+              <Descriptions.Item label="Кол-во комнат">{data.rooms}</Descriptions.Item>
+              <Descriptions.Item label="Метраж">{data.footage}</Descriptions.Item>
+              <Descriptions.Item label="Сроки"> {data.time}</Descriptions.Item>
+              <Descriptions.Item label="Категория">{data.categoryRepair}</Descriptions.Item>
+            </Descriptions>
             <div className={styles.desc}>
               <div className={styles.title}>Обзор проекта:</div>
               <div className={restDesc ? styles.fullText : styles.text}>{data.desc}</div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Swiper as SwiperClass } from 'swiper';
+import { Swiper as SwiperType } from 'swiper';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -26,7 +26,7 @@ const GalleryThumbs = ({
   watermarkText = 'Ремостар',
   watermark = true,
 }: IGalleryProps) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   return (
     <div className={`${styles.gallery} ${className}`}>
@@ -44,18 +44,10 @@ const GalleryThumbs = ({
               <Image.PreviewGroup items={data}>
                 {watermark ? (
                   <Watermark content={watermarkText}>
-                    <ImageCustom
-                      borderRadius={0}
-                      className={styles.viewGalleryImage}
-                      src={item.src}
-                    />
+                    <ImageCustom className={styles.viewGalleryImage} src={item.src} />
                   </Watermark>
                 ) : (
-                  <ImageCustom
-                    borderRadius={0}
-                    className={styles.viewGalleryImage}
-                    src={item.src}
-                  />
+                  <ImageCustom className={styles.viewGalleryImage} src={item.src} />
                 )}
               </Image.PreviewGroup>
             </SwiperSlide>

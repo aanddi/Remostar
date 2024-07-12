@@ -2,9 +2,9 @@
 
 .about {
   .info {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    width: 50%;
   }
+  
   .desc {
     margin: 24px 0;
     font-size: 16px;

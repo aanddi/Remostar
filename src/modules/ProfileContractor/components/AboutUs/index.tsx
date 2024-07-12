@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { Description, Title } from '@components';
+import { Title } from '@components';
+
+import { Descriptions } from 'antd';
 
 import styles from './AboutUs.module.scss';
 import mock from './mock';
 
 const notIndicated = 'Не указано';
+const fontSize = '16px';
 
 const AboutUs = ({ id }: { id?: string }) => {
   console.log(id);
@@ -13,26 +16,24 @@ const AboutUs = ({ id }: { id?: string }) => {
     <section className={styles.about}>
       <Title title="О нас" level={3} />
       <div className={styles.wrapper}>
-        <div className={styles.info}>
-          <Description label="Размер компании" size={16}>
+        <Descriptions
+          className={styles.info}
+          contentStyle={{ fontSize }}
+          labelStyle={{ fontSize }}
+          column={2}
+        >
+          <Descriptions.Item label="Размер компании">
             {mock.sizeCompany ?? notIndicated}
-          </Description>
-          <Description label="Телефон" size={16}>
-            {mock.phone ?? notIndicated}
-          </Description>
-          <Description label="Сайт компании" size={16}>
-            {mock.site ?? notIndicated}
-          </Description>
-          <Description label="На рынке" size={16}>
+          </Descriptions.Item>
+          <Descriptions.Item label="Телефон"> {mock.phone ?? notIndicated}</Descriptions.Item>
+          <Descriptions.Item label="Сайт компании">
             {mock.durationOfWork ?? notIndicated}
-          </Description>
-          <Description label="Юр. название" size={16}>
+          </Descriptions.Item>
+          <Descriptions.Item label="Юр. название">
             {mock.legalName ?? notIndicated}
-          </Description>
-          <Description label="ИНН" size={16}>
-            {mock.inn ?? notIndicated}
-          </Description>
-        </div>
+          </Descriptions.Item>
+          <Descriptions.Item label="Кухня">{mock.inn ?? notIndicated}</Descriptions.Item>
+        </Descriptions>
         <div className={styles.desc}>{mock.desc}</div>
       </div>
     </section>

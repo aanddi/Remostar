@@ -18,6 +18,8 @@
     .viewGalleryImage {
       max-width: 100%;
       max-height: 450px;
+
+      border-radius: 0 !important;
     }
   }
 
@@ -27,7 +29,6 @@
     .galleryThumbsImage {
       width: 80px;
       height: 80px;
-
 
       &:hover {
         filter: brightness(65%);
