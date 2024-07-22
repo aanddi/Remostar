@@ -1,22 +1,14 @@
 @import '/src/styles/variables.scss';
+@import '../Form.scss';
 
 .inputWrapper {
-  background-color: $blue-light;
-  border-color: darken($blue-light, 3%);
-
-  &:hover {
-    border-color: lighten($primary-dark, 55%) !important;
-    cursor: initial;
-    transition: all .2s ease-in-out;
+  &.ant-input-outlined.ant-input-status-error,
+  &.ant-input-outlined.ant-input-status-error:focus-within,
+  &.ant-input-outlined.ant-input-status-error:hover {
+    border-color: $required-fields !important;
   }
 
   &.ant-input-outlined {
-    border-color: none;
-    background-color: $blue-light;
-
-    &:focus-within {
-      border-color: lighten($primary-dark, 55%) !important;
-      box-shadow: none !important;
-    }
+    @include focus-within;
   }
 }

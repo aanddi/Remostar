@@ -1,0 +1,30 @@
+// TODO: сделать миксин под размеры полей
+
+@mixin ui-field {
+  background-color: $blue-light;
+  border-color: darken($blue-light, 3%);
+  height: 56px;
+  padding: 20px 15px;
+  font-size: 16px !important;
+
+  &:hover {
+    border-color: lighten($primary-dark, 55%) !important;
+    cursor: initial;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &.error {
+    background-color: $bg-error !important;
+    border-color: $required-fields !important;
+  }
+}
+
+@mixin focus-within {
+  border-color: none;
+  background-color: $blue-light;
+
+  &:focus-within {
+    border-color: lighten($primary-dark, 55%) !important;
+    box-shadow: none !important;
+  }
+}

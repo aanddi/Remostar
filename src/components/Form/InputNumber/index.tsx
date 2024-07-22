@@ -1,28 +1,28 @@
 import React, { forwardRef, useMemo } from 'react';
 
-import { InputProps, InputRef, Input as UIInput } from 'antd';
+import { InputNumberProps, InputNumber as UIInputNumber } from 'antd';
 
-import styles from './Input.module.scss';
-import './Input.scss';
+import styles from './InputNumber.module.scss';
+import './InputNumber.scss';
 
 import WrapperWithLabel from '../WrapperWithLabel';
 
-interface IInputProps extends InputProps {
+interface IInputNumberProps extends InputNumberProps {
   label?: string;
   labelClassName?: string;
   isRequired?: boolean;
   error?: string;
 }
 
-const Input = forwardRef<InputRef, IInputProps>(
+const InputNumber = forwardRef<HTMLInputElement, IInputNumberProps>(
   ({ label, error, labelClassName, isRequired = false, type = 'text', ...restProps }, ref) => {
     const field = useMemo(
       () => (
-        <UIInput
+        <UIInputNumber
           type={type}
           ref={ref}
           status={error && 'error'}
-          className={`inputWrapper ${styles.input} ${error && styles.error}`}
+          className={`inputNumber ${styles.inputNumber} ${error && styles.error}`}
           {...restProps}
         />
       ),
@@ -46,4 +46,4 @@ const Input = forwardRef<InputRef, IInputProps>(
   },
 );
 
-export default Input;
+export default InputNumber;

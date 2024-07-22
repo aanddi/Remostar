@@ -10,6 +10,11 @@ const theme = {
 
     borderRadius: 7,
   },
+  components: {
+    Segmented: {
+      itemSelectedBg: '#129D3F',
+    },
+  },
 };
 
 export default theme;

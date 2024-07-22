@@ -1,7 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { Button } from '@components';
+
+import ModalCitys from '@common/components/CitysModal';
+import ModalLogin from '@common/components/LoginModal';
+
+import { useAppSelector } from '@store/hooks';
 
 import Logo from '@assets/Logo.svg?react';
 
@@ -18,13 +23,26 @@ const { Header } = Layout;
 const AppHeader = () => {
   const location = useLocation();
 
+  const [isModalLoginOpen, setModalLoginOpen] = useState(false);
+  const [isModalCitysOpen, setModalCitysOpen] = useState(false);
+
+  const { city } = useAppSelector((state) => state.citys);
+
   const handleModalLogin = useCallback(() => {
-    console.log('open modal login');
+    setModalLoginOpen(true);
   }, []);
 
+  const handleCloseModalLogin = () => {
+    setModalLoginOpen(false);
+  };
+
   const handleModalCity = useCallback(() => {
-    console.log('open modal city');
+    setModalCitysOpen(true);
   }, []);
+
+  const handleCloseModalCitys = () => {
+    setModalCitysOpen(false);
+  };
 
   return (
     <Header className={styles.header}>
@@ -54,7 +72,7 @@ const AppHeader = () => {
               icon={<LuMapPin size={18} />}
               onClick={handleModalCity}
             >
-              Симферополь
+              {city}
             </Button>
             <Button
               type="text"
@@ -67,6 +85,8 @@ const AppHeader = () => {
             </Button>
           </div>
         </div>
+        <ModalLogin open={isModalLoginOpen} onCancel={handleCloseModalLogin} />
+        <ModalCitys open={isModalCitysOpen} onCancel={handleCloseModalCitys} />
       </div>
     </Header>
   );

@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Button } from '@components';
 
 import { Verify } from '@common';
-import formatNumber from '@common/utils/format-price';
+import { formatNumber } from '@common/utils/formatter';
 
 import { Avatar, Image, Tag, Tooltip, Watermark } from 'antd';
 
