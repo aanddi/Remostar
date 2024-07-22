@@ -1,0 +1,21 @@
+@import '/src/styles/variables.scss';
+
+.modal {
+  width: 550px !important;
+
+  .wrapper {
+    min-height: 200px;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin: 40px 0;
+  }
+
+  .cityItem {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { FreeMode, Navigation, Pagination, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Image as ImageCustom } from '@components';
@@ -35,8 +35,9 @@ const GalleryThumbs = ({
         loop
         spaceBetween={10}
         navigation
+        pagination={{ type: 'fraction' }}
         thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-        modules={[FreeMode, Navigation, Thumbs]}
+        modules={[FreeMode, Navigation, Thumbs, Pagination]}
       >
         {data.map((item) => {
           return (

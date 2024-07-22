@@ -1,6 +1,7 @@
 @import '/src/styles/variables.scss';
 @import '../Form.scss';
 
-.input {
+.inputNumber {
+  width: 100%;
   @include ui-field;
 }

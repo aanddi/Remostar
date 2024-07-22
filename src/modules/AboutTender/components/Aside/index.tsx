@@ -5,7 +5,7 @@ import { IAside } from '@modules/AboutTender/type';
 import { Button } from '@components';
 
 import { Verify } from '@common';
-import formatNumber from '@common/utils/format-price';
+import { formatNumber } from '@common/utils/formatter';
 
 import { Avatar } from 'antd';
 

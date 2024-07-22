@@ -1,0 +1,24 @@
+@import '/src/styles/variables.scss';
+
+.tabsSwitch {
+  width: 200px;
+
+  .ant-tabs-nav {
+    background-color: $blue-light !important;
+    border-radius: 10px;
+  }
+
+  .ant-tabs-nav-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ant-tabs-tab-active {
+    background-color: $primary;
+  }
+
+  .ant-tabs-ink-bar {
+    display: none;
+  }
+}

@@ -1,0 +1,42 @@
+@import '/src/styles/variables.scss';
+
+.modal {
+  width: 450px !important;
+
+  .title {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .segmented {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    font-size: 16px;
+
+    .register a,
+    .help {
+      color: $primary;
+
+      text-decoration: underline;
+      text-decoration-color: $primary;
+      text-underline-offset: 4px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .help {
+      margin-top: 8px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import '/src/styles/variables.scss';
+
+.wrapper {
+  position: relative;
+  transform-origin: 0 0;
+
+  .label {
+    position: absolute;
+    left: 16px;
+    z-index: 100;
+
+    width: 85%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-weight: 500;
+    pointer-events: none;
+
+    transition: all 0.3s ease;
+    transform: scale(0.85) translateY(6px);
+    transform-origin: left top;
+
+    &.unactive {
+      transform: scale(1.15) translateY(14px);
+    }
+
+    &.error {
+      color: $required-fields;
+    }
+
+    &.required {
+      &::after {
+        content: '*';
+        padding-left: 2px;
+        font-weight: 200;
+        color: $required-fields;
+      }
+    }
+  }
+
+  .fieldUnActive {
+    & > * {
+      padding: 25px 15px 10px 15px !important;
+    }
+  }
+}
