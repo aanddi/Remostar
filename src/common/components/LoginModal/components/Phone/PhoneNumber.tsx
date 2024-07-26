@@ -44,6 +44,9 @@ const PhoneNumber = ({ setPhoneNumber }: IPhoneNumberProps) => {
           <InputNumber
             label="Номер телефона"
             error={errors.phone?.message}
+            type="tel"
+            inputMode="numeric"
+            autoComplete="tel"
             controls={false}
             formatter={(value) => formatPhone(value as string)}
             parser={(value) => (value ? parseInt(value?.replace(/\D/g, ''), 10) : '')}

@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
 # получение измененных файлов
 staged_files=$(git diff --cached --name-only)

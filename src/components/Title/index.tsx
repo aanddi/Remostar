@@ -15,7 +15,7 @@ interface ITitleProps {
 
 const Title = ({
   title,
-  level,
+  level = 3,
   className,
   classNameAfter,
   afterContent,
