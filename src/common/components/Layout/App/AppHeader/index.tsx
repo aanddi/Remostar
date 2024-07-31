@@ -5,15 +5,13 @@ import { Button } from '@components';
 
 import ModalCitys from '@common/components/CitysModal';
 import ModalLogin from '@common/components/LoginModal';
+import { Login, Map } from '@common/icon';
 
 import { useAppSelector } from '@store/hooks';
 
 import Logo from '@assets/Logo.svg?react';
 
 import { Layout } from 'antd';
-
-import { FiLogIn } from 'react-icons/fi';
-import { LuMapPin } from 'react-icons/lu';
 
 import styles from './AppHeader.module.scss';
 import menuData from './menu-data';
@@ -69,7 +67,7 @@ const AppHeader = () => {
               type="text"
               size="middle"
               className={styles.city}
-              icon={<LuMapPin size={18} />}
+              icon={<Map size={18} />}
               onClick={handleModalCity}
             >
               {city}
@@ -78,7 +76,7 @@ const AppHeader = () => {
               type="text"
               size="middle"
               className={styles.login}
-              icon={<FiLogIn size={18} />}
+              icon={<Login size={18} />}
               onClick={handleModalLogin}
             >
               Войти

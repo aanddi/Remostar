@@ -6,13 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Button } from '@components';
 
 import { Verify } from '@common';
+import { Heart, Map, MessageReport } from '@common/icon';
 import { formatNumber } from '@common/utils/formatter';
 
 import { Avatar, Image, Tag, Tooltip, Watermark } from 'antd';
-
-import { FaHeart } from 'react-icons/fa6';
-import { LuMapPin } from 'react-icons/lu';
-import { TbMessageReport } from 'react-icons/tb';
 
 import styles from './AnnouncementCard.module.scss';
 import IAnnouncementCardProps from './type';
@@ -25,11 +22,11 @@ const AnnouncementCard = ({ data }: IAnnouncementCardProps) => {
         <div className={styles.wrapper}>
           <div className={styles.actionsButton}>
             <div className={styles.actionItem}>
-              <FaHeart className={styles.favorite} size={19} />
+              <Heart className={styles.favorite} size={19} />
             </div>
             <Tooltip title="Сообщить о нарушении">
               <div className={styles.actionItem}>
-                <TbMessageReport size={22} />
+                <MessageReport size={22} />
               </div>
             </Tooltip>
           </div>
@@ -64,7 +61,7 @@ const AnnouncementCard = ({ data }: IAnnouncementCardProps) => {
               </div>
               <div className={styles.info}>
                 <div className={styles.item}>
-                  <LuMapPin size={15} />
+                  <Map size={15} />
                   {data?.adress}
                 </div>
               </div>

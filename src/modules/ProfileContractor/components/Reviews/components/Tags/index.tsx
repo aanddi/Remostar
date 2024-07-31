@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { Button } from '@components';
 
-import { IoMdClose } from 'react-icons/io';
+import { Close } from '@common/icon';
 
 import styles from './Tags.module.scss';
 
@@ -28,7 +28,7 @@ const Tags = ({ data, activeTag, setActiveTag }: ITags) => {
           <Button
             className={styles.reset}
             type="text"
-            icon={<IoMdClose />}
+            icon={<Close />}
             onClick={() => setActiveTag('')}
           >
             Сбросить

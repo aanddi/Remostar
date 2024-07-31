@@ -3,7 +3,9 @@ import { useLocation, useParams } from 'react-router-dom';
 
 import { Tabs } from '@components';
 
-import { HiBriefcase, HiChatAlt2, HiHome } from 'react-icons/hi';
+import { Briefcase, Home } from '@common/icon';
+
+import { HiChatAlt2 } from 'react-icons/hi';
 import { HiMiniClipboardDocumentCheck } from 'react-icons/hi2';
 
 import { AboutUs, Header, Portfolio, Reviews, Services } from './components';
@@ -27,13 +29,13 @@ const ProfileContractor = () => {
         key: PortfolioEnum.about,
         label: 'О нас',
         children: <AboutUs id={id} />,
-        icon: <HiHome size={ICON_SIZE} />,
+        icon: <Home size={ICON_SIZE} />,
       },
       {
         key: PortfolioEnum.services,
         label: 'Услуги',
         children: <Services id={id} />,
-        icon: <HiBriefcase size={ICON_SIZE} />,
+        icon: <Briefcase size={ICON_SIZE} />,
       },
       {
         key: PortfolioEnum.portfolio,

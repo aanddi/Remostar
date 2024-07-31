@@ -3,8 +3,7 @@ import React from 'react';
 import { Breadcrumb, Button, Image } from '@components';
 
 import { Verify } from '@common';
-
-import { IoMdAdd } from 'react-icons/io';
+import { Add } from '@common/icon';
 
 import styles from './Header.module.scss';
 import mock from './mock';
@@ -38,7 +37,7 @@ const Header = ({ id }: { id?: string }) => {
             </div>
             <div className={styles.actions}>
               <Button type="primary">Написать</Button>
-              <Button className={styles.button} icon={<IoMdAdd />}>
+              <Button className={styles.button} icon={<Add size={18} />}>
                 Добавить в избранное
               </Button>
             </div>

@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from '@components/Button';
 
-import { BreadcrumbProps, Breadcrumb as UIBreadcrumb } from 'antd';
+import { ArrowBack } from '@common/icon';
 
-import { IoArrowBack } from 'react-icons/io5';
+import { BreadcrumbProps, Breadcrumb as UIBreadcrumb } from 'antd';
 
 import styles from './Breadcrumb.module.scss';
 import './Breadcrumb.scss';
@@ -20,7 +20,7 @@ const Breadcrumb = ({ className, buttonBack = true, ...restProps }: IBreadcrumbP
   return (
     <div className={styles.wrapper}>
       {buttonBack && (
-        <Button icon={<IoArrowBack size={15} />} onClick={() => navigate(-1)}>
+        <Button icon={<ArrowBack size={15} />} onClick={() => navigate(-1)}>
           Назад
         </Button>
       )}

@@ -3,10 +3,11 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { Button, Input } from '@components';
 
+import { Filter } from '@common/icon';
+
 import { Tooltip, Typography } from 'antd';
 
 import { FiSearch } from 'react-icons/fi';
-import { LuSettings2 } from 'react-icons/lu';
 
 import styles from './Seacr.module.scss';
 import { ISearchProps } from './type';
@@ -63,7 +64,7 @@ const Search = ({
           {onOpenFilter && (
             <Tooltip title="Фильтр">
               <Button type="default" size="large" className={styles.filter} onClick={handleFilter}>
-                <LuSettings2 size={20} />
+                <Filter size={20} />
               </Button>
             </Tooltip>
           )}

@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 
 import { Pagination, Select } from '@components';
 
-import { Typography } from 'antd';
+import { ArrowsSort } from '@common/icon';
 
-import { TbArrowsSort } from 'react-icons/tb';
+import { Typography } from 'antd';
 
 import styles from './Ribbon.module.scss';
 import IribbonProps from './type';
@@ -35,7 +35,7 @@ const Ribbon = ({
             </Typography.Title>
             {sortOptions && (
               <div className={styles.sort}>
-                <TbArrowsSort size={20} className={styles.icon} />
+                <ArrowsSort size={20} className={styles.icon} />
                 <Select
                   variant="borderless"
                   defaultValue={sortOptions[0]}

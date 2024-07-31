@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Button, Select, Title } from '@components';
 
-import { IoMdAdd } from 'react-icons/io';
+import { Add } from '@common/icon';
 
 import Card from './components/Card';
 import Statistics from './components/Statistics';
@@ -20,7 +20,7 @@ const Reviews = ({ id }: { id?: string }) => {
     <section className={styles.reviews}>
       <div className={styles.header}>
         <Title title="Отзывы" afterContent={mock.statistics.totalCount} level={3} />
-        <Button type="primary" icon={<IoMdAdd />}>
+        <Button type="primary" icon={<Add size={18} />}>
           Написать отзыв
         </Button>
       </div>
