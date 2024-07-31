@@ -2,6 +2,7 @@ import React, { PropsWithChildren, Suspense, lazy, useLayoutEffect } from 'react
 import { useLocation, useRoutes } from 'react-router-dom';
 
 import { AppLayout } from '@common';
+import FullScreenLoader from '@common/components/FullScreenLoader';
 
 import { Spin } from 'antd';
 
@@ -36,7 +37,7 @@ const Router = () => {
     {
       path: 'contractors',
       element: (
-        <Suspense fallback={<Spin />}>
+        <Suspense fallback={<FullScreenLoader />}>
           <AppLayout>
             <SearchContractorsPage />
           </AppLayout>
@@ -47,7 +48,7 @@ const Router = () => {
     {
       path: 'contractor/:id',
       element: (
-        <Suspense fallback={<Spin />}>
+        <Suspense fallback={<FullScreenLoader />}>
           <AppLayout>
             <ProfileContractorsPage />
           </AppLayout>
@@ -57,7 +58,7 @@ const Router = () => {
     {
       path: 'tenders',
       element: (
-        <Suspense fallback={<Spin />}>
+        <Suspense fallback={<FullScreenLoader />}>
           <AppLayout>
             <SearchOwnersPage />
           </AppLayout>
@@ -67,7 +68,7 @@ const Router = () => {
     {
       path: 'tender/:id',
       element: (
-        <Suspense fallback={<Spin />}>
+        <Suspense fallback={<FullScreenLoader />}>
           <AppLayout>
             <AboutTenderPage />
           </AppLayout>

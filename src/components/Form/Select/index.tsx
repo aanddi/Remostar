@@ -1,9 +1,9 @@
 import type { BaseSelectRef } from 'rc-select';
 import React, { forwardRef, useMemo } from 'react';
 
-import { SelectProps, Select as UISelect } from 'antd';
+import { ArrowDown } from '@common/icon';
 
-import { IoIosArrowDown } from 'react-icons/io';
+import { SelectProps, Select as UISelect } from 'antd';
 
 import styles from './Select.module.scss';
 import './Select.scss';
@@ -20,7 +20,7 @@ const Select = forwardRef<BaseSelectRef, ISelectProps>(({ className, ...restProp
     () => (
       <UISelect
         className={`select ${styles.select} ${className}`}
-        suffixIcon={<IoIosArrowDown size={15} />}
+        suffixIcon={<ArrowDown size={15} />}
         ref={ref}
         {...restProps}
       />

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Tooltip } from 'antd';
+import { Verify as VerifyIcon } from '@common/icon';
 
-import { GoShieldCheck } from 'react-icons/go';
+import { Tooltip } from 'antd';
 
 import styles from './Verify.module.scss';
 
@@ -20,11 +20,7 @@ const Verify = ({
   className,
 }: ITitleProps) => (
   <Tooltip title={textTooltip}>
-    <GoShieldCheck
-      className={`${styles.verify} ${className}`}
-      strokeWidth={strokeWidth}
-      size={size}
-    />
+    <VerifyIcon className={`${styles.verify} ${className}`} strokeWidth={strokeWidth} size={size} />
   </Tooltip>
 );
 

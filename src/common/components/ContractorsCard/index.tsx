@@ -4,13 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@components';
 
 import { Verify } from '@common';
+import { Briefcase, Heart, Map, Message, MessageReport, Star } from '@common/icon';
 
 import { Avatar, Tag, Tooltip, Typography } from 'antd';
-
-import { FaHeart, FaStar } from 'react-icons/fa';
-import { LuMapPin } from 'react-icons/lu';
-import { MdOutlineBusinessCenter } from 'react-icons/md';
-import { TbMessage, TbMessageReport } from 'react-icons/tb';
 
 import styles from './ContractorsCard.module.scss';
 import IContractorCardProps from './type';
@@ -23,11 +19,11 @@ const ContractorsCard = ({ data }: IContractorCardProps) => {
         <div className={styles.wrapper}>
           <div className={styles.actions}>
             <div className={styles.actionItem}>
-              <FaHeart className={styles.favorite} size={19} />
+              <Heart className={styles.favorite} size={19} />
             </div>
             <Tooltip title="Сообщить о нарушении">
               <div className={styles.actionItem}>
-                <TbMessageReport size={22} />
+                <MessageReport size={22} />
               </div>
             </Tooltip>
           </div>
@@ -43,11 +39,11 @@ const ContractorsCard = ({ data }: IContractorCardProps) => {
                 </div>
                 <div className={styles.reviews}>
                   <div className={styles.reviewsItem}>
-                    <FaStar size={18} className={styles.star} />
+                    <Star size={18} className={styles.star} />
                     {data?.reviews.starCount}
                   </div>
                   <div className={styles.reviewsItem}>
-                    <TbMessage size={18} className={styles.comment} />
+                    <Message size={18} className={styles.comment} />
                     <Link
                       to={`/contractor/${data?.id}/?view=reviews`}
                       className={styles.commentLink}
@@ -59,11 +55,11 @@ const ContractorsCard = ({ data }: IContractorCardProps) => {
               </div>
               <div className={styles.infoScoupe}>
                 <div className={styles.infoItem}>
-                  <LuMapPin size={15} />
+                  <Map size={15} />
                   {data?.city}
                 </div>
                 <div className={styles.infoItem}>
-                  <MdOutlineBusinessCenter size={15} />
+                  <Briefcase size={15} />
                   {data?.contartorType}
                 </div>
               </div>
