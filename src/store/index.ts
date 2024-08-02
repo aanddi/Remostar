@@ -1,10 +1,9 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 
-// eslint-disable-next-line import/no-named-as-default
-import citysSlice from './slices/citys.slice';
+import citys from './slices/citys.slice';
 
 export const store = configureStore({
-  reducer: { citys: citysSlice },
+  reducer: { citys },
 });
 
 export type AppDispatch = typeof store.dispatch;

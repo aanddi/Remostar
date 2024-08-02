@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { AnnouncementCard, Ribbon, Search } from '@common';
 
 import styles from './SearchOwners.module.scss';
-import { categories, sortOptions } from './constans';
+import sortOptions from './constans';
 import responseGetAnnouncements from './mock';
 
 const SearchOwners = () => {
@@ -12,10 +12,6 @@ const SearchOwners = () => {
   }, []);
 
   const handleSearch = useCallback((data: any) => {
-    console.log(data);
-  }, []);
-
-  const handleSearchCategories = useCallback((data: any) => {
     console.log(data);
   }, []);
 
@@ -30,8 +26,6 @@ const SearchOwners = () => {
           title="Поиск собственника"
           onOpenFilter={handleOpenFilter}
           onSearch={handleSearch}
-          onSearchCategories={handleSearchCategories}
-          categories={categories}
         />
       </div>
       <Ribbon
@@ -43,7 +37,7 @@ const SearchOwners = () => {
         classNameList={styles.listAnnouncements}
       >
         {responseGetAnnouncements.announcements.map((announcement) => {
-          return <AnnouncementCard data={announcement} />;
+          return <AnnouncementCard key={announcement.id} data={announcement} />;
         })}
       </Ribbon>
     </div>

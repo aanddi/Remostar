@@ -1,9 +1,3 @@
-const categories = [
-  { id: 1, name: '1 комнатная', count: undefined },
-  { id: 2, name: '2 комнатная', count: undefined },
-  { id: 3, name: '3 комнатная', count: undefined },
-];
-
 const sortOptions = [
   { label: 'по популярности', value: 'popularity' },
   { label: 'по бюджету (сначала дороже)', value: 'maxRating' },
@@ -12,4 +6,4 @@ const sortOptions = [
   { label: 'по метрожу (сначала меньше)', value: 'minSize' },
 ];
 
-export { categories, sortOptions };
+export default sortOptions;
