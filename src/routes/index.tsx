@@ -4,8 +4,6 @@ import { useLocation, useRoutes } from 'react-router-dom';
 import { AppLayout } from '@common';
 import FullScreenLoader from '@common/components/FullScreenLoader';
 
-import { Spin } from 'antd';
-
 const SearchOwnersPage = lazy(() => import('./SearchOwners'));
 const SearchContractorsPage = lazy(() => import('./SearchContractors'));
 const AboutPlatformPage = lazy(() => import('./AboutPlatform'));
@@ -27,7 +25,7 @@ const Router = () => {
     {
       path: '/',
       element: (
-        <Suspense fallback={<Spin />}>
+        <Suspense fallback={<FullScreenLoader />}>
           <AppLayout>
             <AboutPlatformPage />
           </AppLayout>

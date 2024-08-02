@@ -1,19 +1,13 @@
 interface ISearchProps {
   title: string;
+  totalCountFilter?: number;
   onSearch: (data: ISearch) => void;
-  onSearchCategories?: (categorie: string) => void;
   onOpenFilter?: () => void;
-  categories?: ICategories[];
 }
 
 interface ISearch {
   searchField: string;
+  searchCity: string;
 }
 
-interface ICategories {
-  id: number;
-  name: string;
-  count?: number;
-}
-
-export type { ISearchProps, ICategories, ISearch };
+export type { ISearchProps, ISearch };

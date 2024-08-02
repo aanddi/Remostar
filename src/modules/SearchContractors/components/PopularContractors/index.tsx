@@ -8,6 +8,7 @@ import styles from './PopularContractors.module.scss';
 
 interface PopularContractorsProps {
   contractors: {
+    id: number;
     src: string;
     name: string;
     verify: boolean;
@@ -22,7 +23,7 @@ const PopularContractors = ({ contractors }: PopularContractorsProps) => (
     <div className={styles.list}>
       {contractors.map((contractor) => {
         return (
-          <div className={styles.card}>
+          <div key={contractor.id} className={styles.card}>
             <div className={styles.wrapper}>
               <Avatar size={110} src={contractor.src} />
               <div className={styles.name}>
