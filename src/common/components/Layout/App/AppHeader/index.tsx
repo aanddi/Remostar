@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { Button } from '@components';
 
 import ModalCitys from '@common/components/CitysModal';
 import ModalLogin from '@common/components/LoginModal';
+import useModal from '@common/hooks/useModal';
 import { Login, Map } from '@common/icon';
 
 import { useAppSelector } from '@store/hooks';
@@ -19,28 +20,21 @@ import menuData from './menu-data';
 const { Header } = Layout;
 
 const AppHeader = () => {
-  const location = useLocation();
-
-  const [isModalLoginOpen, setModalLoginOpen] = useState(false);
-  const [isModalCitysOpen, setModalCitysOpen] = useState(false);
-
   const { city } = useAppSelector((state) => state.citys);
 
-  const handleModalLogin = useCallback(() => {
-    setModalLoginOpen(true);
-  }, []);
+  const location = useLocation();
 
-  const handleCloseModalLogin = () => {
-    setModalLoginOpen(false);
-  };
+  const {
+    isOpenModal: isModalLoginOpen,
+    handleOpenModal: handleModalLogin,
+    handleCloseModal: handleCloseModalLogin,
+  } = useModal();
 
-  const handleModalCity = useCallback(() => {
-    setModalCitysOpen(true);
-  }, []);
-
-  const handleCloseModalCitys = () => {
-    setModalCitysOpen(false);
-  };
+  const {
+    isOpenModal: isModalCitysOpen,
+    handleOpenModal: handleModalCity,
+    handleCloseModal: handleCloseModalCitys,
+  } = useModal();
 
   return (
     <Header className={styles.header}>
