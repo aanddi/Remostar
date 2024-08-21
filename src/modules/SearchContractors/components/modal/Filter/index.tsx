@@ -35,22 +35,22 @@ const FilterModal = ({ ...restProps }) => {
     setTotalCountFilter(totalLength);
   }, [subjectsFilter, tagsFilter, aboutFilter]);
 
-  const handleSubjectsFilter = (value: string) => {
-    const isActive = subjectsFilter.includes(value);
-    if (isActive) setSubjectsFilter(subjectsFilter.filter((item) => item !== value));
-    else setSubjectsFilter((prev) => [...prev, value]);
-  };
+  const handleFilters = (value: string, filterName: FilterParams) => {
+    if (filterName === FilterParams.ABOUT) {
+      if (aboutFilter.includes(value)) setAboutFilter(aboutFilter.filter((item) => item !== value));
+      else setAboutFilter((prev) => [...prev, value]);
+    }
 
-  const handleAboutFilter = (value: string) => {
-    const isActive = aboutFilter.includes(value);
-    if (isActive) setAboutFilter(aboutFilter.filter((item) => item !== value));
-    else setAboutFilter((prev) => [...prev, value]);
-  };
+    if (filterName === FilterParams.SUBJECTS) {
+      if (subjectsFilter.includes(value))
+        setSubjectsFilter(subjectsFilter.filter((item) => item !== value));
+      else setSubjectsFilter((prev) => [...prev, value]);
+    }
 
-  const handleTagsFilter = (value: string) => {
-    const isActive = tagsFilter.includes(value);
-    if (isActive) setTagsFilter(tagsFilter.filter((item) => item !== value));
-    else setTagsFilter((prev) => [...prev, value]);
+    if (filterName === FilterParams.TAGS) {
+      if (tagsFilter.includes(value)) setTagsFilter(tagsFilter.filter((item) => item !== value));
+      else setTagsFilter((prev) => [...prev, value]);
+    }
   };
 
   const handleSubmitFilters = () => {
@@ -106,7 +106,7 @@ const FilterModal = ({ ...restProps }) => {
                     key={key}
                     shape="round"
                     className={`${isActive && styles.btnActive} ${styles.btnFilter}`}
-                    onClick={() => handleSubjectsFilter(value)}
+                    onClick={() => handleFilters(value, FilterParams.SUBJECTS)}
                   >
                     {value}
                   </Button>
@@ -124,7 +124,7 @@ const FilterModal = ({ ...restProps }) => {
                     key={key}
                     shape="round"
                     className={`${isActive && styles.btnActive} ${styles.btnFilter}`}
-                    onClick={() => handleAboutFilter(value)}
+                    onClick={() => handleFilters(value, FilterParams.ABOUT)}
                   >
                     {value}
                   </Button>
@@ -142,7 +142,7 @@ const FilterModal = ({ ...restProps }) => {
                     key={key}
                     shape="round"
                     className={`${isActive && styles.btnActive} ${styles.btnFilter}`}
-                    onClick={() => handleTagsFilter(value)}
+                    onClick={() => handleFilters(value, FilterParams.TAGS)}
                   >
                     {value}
                   </Button>

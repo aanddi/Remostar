@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { ContractorsCard, Ribbon, Search } from '@common';
+import useModal from '@common/hooks/useModal';
 
 import PopularContractors from './components/PopularContractors';
 import FilterModal from './components/modal/Filter';
@@ -14,7 +15,8 @@ import FilterParams from './type';
 const SearchContractors = () => {
   const location = useLocation();
 
-  const [isModalLoginOpen, setModalLoginOpen] = useState<boolean>(false);
+  const { isOpenModal, handleOpenModal, handleCloseModal } = useModal();
+
   const [totalCountFilter, setTotalCountFilter] = useState<number>(0);
 
   useEffect(() => {
@@ -30,15 +32,7 @@ const SearchContractors = () => {
       (queryAbout?.split(',')?.length ?? 0);
 
     setTotalCountFilter(total);
-  }, [location, isModalLoginOpen]);
-
-  const handleOpenFilter = useCallback(() => {
-    setModalLoginOpen(true);
-  }, []);
-
-  const handleCloseFilter = useCallback(() => {
-    setModalLoginOpen(false);
-  }, []);
+  }, [location, isOpenModal]);
 
   const handleSearch = useCallback((data: any) => {
     console.log(data);
@@ -54,7 +48,7 @@ const SearchContractors = () => {
         <Search
           title="Поиск подрядчиков"
           onSearch={handleSearch}
-          onOpenFilter={handleOpenFilter}
+          onOpenFilter={handleOpenModal}
           totalCountFilter={totalCountFilter}
         />
       </div>
@@ -73,7 +67,7 @@ const SearchContractors = () => {
         </div>
         <PopularContractors contractors={responseGetContarctors.popularContartors} />
       </Ribbon>
-      <FilterModal open={isModalLoginOpen} onCancel={handleCloseFilter} />
+      <FilterModal open={isOpenModal} onCancel={handleCloseModal} />
     </div>
   );
 };
