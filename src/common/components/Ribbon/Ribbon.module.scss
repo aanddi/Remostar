@@ -15,19 +15,8 @@
     gap: 32px;
     margin-bottom: 24px;
 
-    .sort {
-      display: flex;
-      align-items: center;
-
-
-      .icon {
-        color: $primary;
-        margin-right: -7px;
-      }
-    }
-
     .selectSort {
-      width: max-content;
+      min-width: 250px;
     }
   }
 
