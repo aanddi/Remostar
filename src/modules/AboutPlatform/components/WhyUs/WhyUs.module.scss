@@ -1,0 +1,42 @@
+.section {
+  margin-bottom: 50px;
+
+  .title {
+    padding-bottom: 8px;
+    text-align: center;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+    .card {
+      border-radius: 20px;
+      .content {
+        padding: 20px;
+      }
+
+      .titleCard {
+        text-align: center;
+
+        &.titleCard1 {
+          color: #0fb84d !important;
+        }
+
+        &.titleCard2 {
+          color: #0fa3de !important;
+        }
+
+        &.titleCard3 {
+          color: #6b92e1 !important;
+        }
+      }
+
+      .subTitle {
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+  }
+}
