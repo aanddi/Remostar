@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 
-import { Pagination, Select } from '@components';
+import { Pagination } from '@components';
 
 import { ArrowsSort } from '@common/icon';
 
-import { Typography } from 'antd';
+import { Select, Typography } from 'antd';
 
 import styles from './Ribbon.module.scss';
 import IribbonProps from './type';
@@ -34,16 +34,13 @@ const Ribbon = ({
               {listCount} найдено
             </Typography.Title>
             {sortOptions && (
-              <div className={styles.sort}>
-                <ArrowsSort size={20} className={styles.icon} />
-                <Select
-                  variant="borderless"
-                  defaultValue={sortOptions[0]}
-                  options={sortOptions}
-                  className={styles.selectSort}
-                  onChange={(value) => handleSort(value)}
-                />
-              </div>
+              <Select
+                defaultValue={sortOptions[0]}
+                options={sortOptions}
+                className={styles.selectSort}
+                suffixIcon={<ArrowsSort size={20} className={styles.icon} />}
+                onChange={(value) => handleSort(value as unknown as string)}
+              />
             )}
           </div>
           <div className={`${classNameList}`}>{children}</div>
