@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button, Title } from '@components';
 
+import image from '@assets/Home/image2.png';
+
 import styles from './RepairIsEasy.module.scss';
 
 const RepairIsEasy = () => {
@@ -33,7 +35,7 @@ const RepairIsEasy = () => {
           </Button>
         </div>
       </div>
-      <div className={styles.bg} />
+      <div className={styles.bg} style={{ backgroundImage: `url(${image})` }} />
     </div>
   );
 };
