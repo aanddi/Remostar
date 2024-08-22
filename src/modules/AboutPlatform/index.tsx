@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { RepairIsEasy, WeDo, WhereToStart, WhyUs } from './components';
+
 const AboutPlatform = () => (
-  <div>
-    <div className="container">
-      <p>Лендинг</p>
-    </div>
+  <div className="container">
+    <RepairIsEasy />
+    <WhereToStart />
+    <WhyUs />
+    <WeDo />
   </div>
 );
 

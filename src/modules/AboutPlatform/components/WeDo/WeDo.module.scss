@@ -1,0 +1,42 @@
+.section {
+  margin-bottom: 50px;
+
+  .card {
+    color: #fff !important;
+    background: linear-gradient(90deg, rgba(30, 74, 74, 1) 16%, rgba(43, 130, 130, 1) 76%);
+    border-radius: 40px;
+
+    .content {
+      padding: 50px 30px;
+
+      .title {
+        text-align: center;
+        color: #fff !important;
+      }
+
+      .items {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 40px;
+
+        .item {
+          text-align: center;
+
+          .icon {
+            color: #00d796;
+          }
+
+          .itemTitle {
+            color: #fff !important;
+          }
+
+          .itemSubTitle {
+            margin: 0 auto;
+            font-size: 15px;
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
