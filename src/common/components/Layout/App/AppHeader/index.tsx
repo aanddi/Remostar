@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { Button } from '@components';
@@ -20,9 +20,11 @@ import menuData from './menu-data';
 const { Header } = Layout;
 
 const AppHeader = () => {
+  const location = useLocation();
+
   const { city } = useAppSelector((state) => state.citys);
 
-  const location = useLocation();
+  const [openMenu, setOpenMenu] = useState(false);
 
   const {
     isOpenModal: isModalLoginOpen,
@@ -36,50 +38,72 @@ const AppHeader = () => {
     handleCloseModal: handleCloseModalCitys,
   } = useModal();
 
+  useEffect(() => {
+    if (openMenu) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [openMenu]);
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [location.pathname]);
+
   return (
     <Header className={styles.header}>
       <div className="container">
         <div className={styles.body}>
-          <div className={styles.info}>
-            <Link to="/" className={styles.logo}>
-              <Logo />
-            </Link>
-            <nav className={styles.menu}>
-              {menuData.map((item) => (
-                <Link
-                  key={item.key}
-                  to={item.path}
-                  className={`${styles.item} ${location.pathname === item.path && styles.active}`}
+          <Link to="/" className={styles.logo}>
+            <Logo />
+          </Link>
+          <div className={`${openMenu && styles.isOpenMenu} ${styles.content}`}>
+            <div className={styles.wrapper}>
+              <nav className={styles.menu}>
+                {menuData.map((item) => (
+                  <Link
+                    key={item.key}
+                    to={item.path}
+                    className={`${styles.item} ${location.pathname === item.path && styles.active}`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+              <div className={styles.actions}>
+                <Button
+                  type="text"
+                  size="large"
+                  className={styles.city}
+                  icon={<Map size={18} />}
+                  onClick={handleModalCity}
                 >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
+                  {city}
+                </Button>
+                <Button
+                  type="text"
+                  size="large"
+                  className={styles.login}
+                  icon={<Login size={18} />}
+                  onClick={handleModalLogin}
+                >
+                  Войти
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className={styles.actions}>
-            <Button
-              type="text"
-              size="middle"
-              className={styles.city}
-              icon={<Map size={18} />}
-              onClick={handleModalCity}
-            >
-              {city}
-            </Button>
-            <Button
-              type="text"
-              size="middle"
-              className={styles.login}
-              icon={<Login size={18} />}
-              onClick={handleModalLogin}
-            >
-              Войти
-            </Button>
-          </div>
+          <button
+            onClick={() => setOpenMenu(!openMenu)}
+            className={`${openMenu && styles.isOpen} ${styles.burgerButton}`}
+            aria-label="Открыть меню"
+          >
+            <span />
+          </button>
         </div>
-        <ModalLogin open={isModalLoginOpen} onCancel={handleCloseModalLogin} />
-        <ModalCitys open={isModalCitysOpen} onCancel={handleCloseModalCitys} />
       </div>
+      <ModalLogin open={isModalLoginOpen} onCancel={handleCloseModalLogin} />
+      <ModalCitys open={isModalCitysOpen} onCancel={handleCloseModalCitys} />
     </Header>
   );
 };
