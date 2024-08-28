@@ -3,13 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Button } from '@components';
+import { Button, Image } from '@components';
 
 import { Verify } from '@common';
 import { Heart, Map, MessageReport } from '@common/icon';
 import { formatNumber } from '@common/utils/formatter';
 
-import { Avatar, Image, Tag, Tooltip, Watermark } from 'antd';
+import { Image as AntdImage, Avatar, Tag, Tooltip, Watermark } from 'antd';
 
 import styles from './AnnouncementCard.module.scss';
 import IAnnouncementCardProps from './type';
@@ -42,11 +42,11 @@ const AnnouncementCard = ({ data }: IAnnouncementCardProps) => {
               {data.gallery.map((image) => {
                 return (
                   <SwiperSlide key={image.key}>
-                    <Image.PreviewGroup items={data.gallery}>
+                    <AntdImage.PreviewGroup items={data.gallery}>
                       <Watermark content="Ремостар">
                         <Image src={image.src} className={styles.galleryItem} />
                       </Watermark>
-                    </Image.PreviewGroup>
+                    </AntdImage.PreviewGroup>
                   </SwiperSlide>
                 );
               })}

@@ -1,3 +1,5 @@
+@import '/src/styles/variables.scss';
+
 .section {
   margin-bottom: 50px;
 
@@ -10,6 +12,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
+
+    @media (max-width: 950px) {
+      grid-template-columns: 1fr;
+    }
 
     .card {
       border-radius: 20px;
@@ -36,6 +42,7 @@
       .subTitle {
         font-size: 16px;
         text-align: center;
+        color: darken($gray, 10%);
       }
     }
   }

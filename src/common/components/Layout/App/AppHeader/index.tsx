@@ -61,15 +61,23 @@ const AppHeader = () => {
           <div className={`${openMenu && styles.isOpenMenu} ${styles.content}`}>
             <div className={styles.wrapper}>
               <nav className={styles.menu}>
-                {menuData.map((item) => (
-                  <Link
-                    key={item.key}
-                    to={item.path}
-                    className={`${styles.item} ${location.pathname === item.path && styles.active}`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                {menuData.map((item) => {
+                  const active = () => {
+                    return item.activePath.some(
+                      (path) =>
+                        location.pathname === path || location.pathname.startsWith(`${path}/`),
+                    );
+                  };
+                  return (
+                    <Link
+                      key={item.key}
+                      to={item.path}
+                      className={`${styles.item} ${active() && styles.active}`}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </nav>
               <div className={styles.actions}>
                 <Button

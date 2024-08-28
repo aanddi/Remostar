@@ -14,7 +14,7 @@ const Info = ({ data }: { data: IInfo }) => {
   return (
     <div className={styles.info}>
       <Title title="Общая информация" level={4} />
-      <Descriptions contentStyle={{ fontSize }} labelStyle={{ fontSize }} column={3}>
+      <Descriptions contentStyle={{ fontSize }} labelStyle={{ fontSize }}>
         <Descriptions.Item label="Площадь">{data.square} м²</Descriptions.Item>
         <Descriptions.Item label="Комнат">{data.rooms}</Descriptions.Item>
         <Descriptions.Item label="Этаж">{data.floor}</Descriptions.Item>

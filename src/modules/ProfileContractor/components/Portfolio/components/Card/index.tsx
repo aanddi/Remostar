@@ -34,7 +34,7 @@ const Card = ({ data }: { data: IPortfolioCard }) => {
                 <SwiperSlide key={image.key}>
                   <Image.PreviewGroup items={data.gallery}>
                     <Watermark content="Ремостар">
-                      <Image src={image.src} />
+                      <Image src={image.src} className={styles.galleryImage} />
                     </Watermark>
                   </Image.PreviewGroup>
                 </SwiperSlide>
@@ -50,7 +50,7 @@ const Card = ({ data }: { data: IPortfolioCard }) => {
               </div>
               <div className={styles.budget}>{formatNumber(data.budget)} ₽</div>
             </div>
-            <Descriptions className={styles.info} column={2} size="small">
+            <Descriptions className={styles.info}>
               <Descriptions.Item label="Тип объекта">{data.type}</Descriptions.Item>
               <Descriptions.Item label="Кол-во комнат">{data.rooms}</Descriptions.Item>
               <Descriptions.Item label="Метраж">{data.footage}</Descriptions.Item>

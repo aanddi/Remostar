@@ -64,6 +64,26 @@ const GalleryThumbs = ({
         freeMode
         watchSlidesProgress
         modules={[FreeMode, Navigation, Thumbs]}
+        breakpoints={{
+          350: {
+            slidesPerView: 4,
+          },
+          500: {
+            slidesPerView: 5,
+          },
+          640: {
+            slidesPerView: 6,
+          },
+          768: {
+            slidesPerView: 8,
+          },
+          1024: {
+            slidesPerView: 9,
+          },
+          1200: {
+            slidesPerView: 10,
+          },
+        }}
       >
         {data.map((item) => {
           return (

@@ -25,7 +25,7 @@
           color: $primary;
           font-weight: 500;
           text-decoration: underline;
-          
+
           &:hover {
             text-decoration: none;
           }
@@ -43,6 +43,26 @@
             text-decoration: none;
           }
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .body {
+      flex-direction: column;
+      justify-content: start;
+      gap: 16px;
+
+      .content {
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        gap: 32px;
+      }
+
+      .policy {
+        width: auto !important;
+        line-height: 25px;
       }
     }
   }

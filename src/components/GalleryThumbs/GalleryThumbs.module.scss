@@ -1,6 +1,18 @@
 .gallery {
   width: 900px;
 
+  @media (max-width: 1300px) {
+    min-width: 100%;
+  }
+
+  @media (max-width: 970px) {
+    width: 500px;
+  }
+
+  @media (max-width: 550px) {
+    width: 300px;
+  }
+
   .viewGallery {
     .viewGalleryItem {
       display: flex;
@@ -16,10 +28,16 @@
     }
 
     .viewGalleryImage {
-      max-width: 100%;
       max-height: 450px;
-
       border-radius: 0 !important;
+
+      @media (max-width: 770px) {
+        max-height: 300px;
+      }
+
+      @media (max-width: 770px) {
+        max-height: 200px;
+      }
     }
   }
 
