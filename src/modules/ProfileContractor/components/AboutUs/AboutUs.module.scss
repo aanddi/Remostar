@@ -2,12 +2,20 @@
 
 .about {
   .info {
-    width: 50%;
+    width: 70%;
+
+    @media (max-width: 1200px) {
+      width: 90%;
+    }
+
+    @media (max-width: 950px) {
+      width: 100%;
+    }
   }
-  
+
   .desc {
     margin: 24px 0;
     font-size: 16px;
     text-align: justify;
-  } 
+  }
 }

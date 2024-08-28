@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
-import { Button, Modal, Title } from '@components';
+import { Button, Modal } from '@components';
 
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { set } from '@store/slices/citys.slice';
@@ -22,6 +22,7 @@ const ModalCitys = ({ ...rest }) => {
   return (
     <Modal
       centered
+      title="Выбор города или региона"
       className={styles.modal}
       okText="Сохранить"
       handleSubmit={handleSubmitModal}
@@ -29,7 +30,6 @@ const ModalCitys = ({ ...rest }) => {
       {...rest}
     >
       <div className={styles.wrapper}>
-        <Title title="Выбор города или региона" level={3} className={styles.title} />
         <div className={styles.list}>
           {mockCitys.map((cityItem) => {
             return (

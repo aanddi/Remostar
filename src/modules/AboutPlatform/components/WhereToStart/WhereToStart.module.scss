@@ -4,9 +4,13 @@
   background-color: #fff;
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  padding: 30px;
+  padding: 32px;
   position: relative;
   z-index: 100;
+
+  @media (max-width: 800px) {
+    padding: 24px;
+  }
 
   .title {
     padding-bottom: 24px;
@@ -17,6 +21,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+    }
 
     .card {
       margin-top: 20px;

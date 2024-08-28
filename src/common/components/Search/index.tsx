@@ -65,23 +65,20 @@ const Search = ({ title, onSearch, onOpenFilter, totalCountFilter }: ISearchProp
               )}
             />
           </div>
-          {onOpenFilter && (
-            <Badge count={totalCountFilter}>
-              <Tooltip title="Фильтр">
-                <Button
-                  type="default"
-                  size="large"
-                  className={styles.filter}
-                  onClick={handleFilter}
-                >
-                  <Filter size={20} />
-                </Button>
-              </Tooltip>
-            </Badge>
-          )}
-          <Button type="primary" size="large" onClick={handleSearch} className={styles.submit}>
-            Найти
-          </Button>
+          <div className={styles.actions}>
+            {onOpenFilter && (
+              <Badge count={totalCountFilter} className={styles.filter}>
+                <Tooltip title="Фильтр">
+                  <Button type="default" size="large" onClick={handleFilter}>
+                    <Filter size={20} />
+                  </Button>
+                </Tooltip>
+              </Badge>
+            )}
+            <Button type="primary" size="large" onClick={handleSearch} className={styles.submit}>
+              Найти
+            </Button>
+          </div>
         </form>
       </div>
     </section>

@@ -1,10 +1,47 @@
 .modal {
   width: auto !important;
 
+  @media (max-width: 600px) {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0 !important;
+    height: 100%;
+
+    .ant-modal-content {
+      border-radius: 0 !important;
+      min-height: 100vh;
+    }
+
+    .ant-modal-footer {
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      background-color: #fff;
+      padding: 20px 0;
+    }
+
+    .ant-modal-close {
+      position: fixed;
+      top: 15px;
+    }
+
+    .ant-modal-header {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      background-color: #fff;
+      width: 100%;
+      padding: 16px;
+      border-radius: 0;
+    }
+  }
+
   .ant-modal-footer {
     display: flex;
     margin-top: 20px;
     margin-left: 0;
+    align-items: flex-end;
   }
 
   .ant-modal-title {

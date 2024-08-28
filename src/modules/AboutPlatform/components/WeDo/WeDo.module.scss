@@ -9,6 +9,10 @@
     .content {
       padding: 50px 30px;
 
+      @media (max-width: 850px) {
+        padding: 24px 20px;
+      }
+
       .title {
         text-align: center;
         color: #fff !important;
@@ -19,6 +23,12 @@
         grid-template-columns: 1fr 1fr 1fr;
         margin-top: 40px;
 
+        @media (max-width: 850px) {
+          grid-template-columns: 1fr;
+          gap: 48px;
+          margin-top: 0;
+        }
+
         .item {
           text-align: center;
 
@@ -28,6 +38,10 @@
 
           .itemTitle {
             color: #fff !important;
+
+            @media (max-width: 850px) {
+              margin: 16px !important;
+            }
           }
 
           .itemSubTitle {

@@ -16,12 +16,7 @@ const AboutUs = ({ id }: { id?: string }) => {
     <section className={styles.about}>
       <Title title="О нас" level={3} />
       <div className={styles.wrapper}>
-        <Descriptions
-          className={styles.info}
-          contentStyle={{ fontSize }}
-          labelStyle={{ fontSize }}
-          column={2}
-        >
+        <Descriptions className={styles.info} contentStyle={{ fontSize }} labelStyle={{ fontSize }}>
           <Descriptions.Item label="Размер компании">
             {mock.sizeCompany ?? notIndicated}
           </Descriptions.Item>

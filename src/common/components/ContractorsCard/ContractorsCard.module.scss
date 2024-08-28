@@ -14,6 +14,16 @@
     top: 20px;
     right: 20px;
 
+    // @media (min-width: 500px) {
+    //   top: 20px;
+    //   right: 20px;
+    // }
+
+    // @media (max-width: 500px) {
+    //   bottom: 0 !important;
+    //   right: 0;
+    // }
+
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -44,6 +54,17 @@
   .header {
     display: flex;
     gap: 32px;
+
+    @media (max-width: 500px) {
+      gap: 24px;
+
+      .logo {
+        & > * {
+          width: 85px !important;
+          height: 85px !important;
+        }
+      }
+    }
   }
 
   .info {
@@ -52,6 +73,12 @@
       align-items: center;
       gap: 40px;
       margin-bottom: 16px;
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
 
       .name {
         display: flex;
@@ -82,6 +109,12 @@
         align-items: center;
         gap: 24px;
         font-weight: 600;
+
+        @media (max-width: 450px) {
+          flex-direction: column;
+          gap: 12px;
+          align-items: flex-start;
+        }
 
         .reviewsItem {
           display: flex;
@@ -133,6 +166,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   .services {
@@ -162,6 +196,11 @@
       border-radius: 10px;
       transition: all 0.4s ease;
 
+      @media (max-width: 400px) {
+        flex-direction: column;
+        gap: 8px;
+      }
+
       &:hover {
         background-color: darken($blue-light, 4%);
         cursor: pointer;
@@ -190,5 +229,13 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+
+      & > * {
+        width: 100%;
+      }
+    }
   }
 }

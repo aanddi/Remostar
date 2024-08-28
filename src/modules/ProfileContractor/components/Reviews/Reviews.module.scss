@@ -10,5 +10,17 @@
   .sort {
     margin-top: 24px;
     width: 200px;
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  .ribbon {
+    width: 80%;
+
+    @media (max-width: 1000px) {
+      width: 100% !important;
+    }
   }
 }

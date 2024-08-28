@@ -2,7 +2,6 @@
 
 .card {
   border-bottom: 2px solid lighten($gray, 30%);
-  width: 80%;
 
   .wrapper {
     padding: 24px 0;
@@ -56,6 +55,10 @@
     column-gap: 24px;
 
     width: 100%;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .gallery {
@@ -63,6 +66,10 @@
     align-items: center;
     gap: 16px;
     margin-top: 24px;
+
+    @media (max-width: 600px) {
+      flex-wrap: wrap;
+    }
 
     .restImages {
       position: relative;

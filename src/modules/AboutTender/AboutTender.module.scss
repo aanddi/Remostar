@@ -14,12 +14,24 @@
     display: flex;
     gap: 32px;
 
+    @media (max-width: 1300px) {
+      flex-direction: column;
+    }
+
     .body {
       flex: 1 1 70%;
+
+      @media (max-width: 1300px) {
+        order: 2;
+      }
     }
 
     .aside {
       flex: 1 1 30%;
+
+      @media (max-width: 1300px) {
+        order: 1;
+      }
     }
   }
 }

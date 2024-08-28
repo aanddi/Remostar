@@ -6,6 +6,10 @@
   transition: all 0.4s ease-in-out;
   margin: 24px 0 40px 0;
 
+  @media (max-width: 450px) {
+    margin: 16px 0 24px 0;
+  }
+
   .body {
     display: flex;
     align-items: center;
@@ -14,12 +18,22 @@
     background-color: $blue-light;
     border-radius: 10px;
 
+    @media (max-width: 450px) {
+      flex-direction: column;
+    }
+
     .delimiter {
-      // width: 4px;
       height: 25px;
-      // background-color: darken($blue-light, 10%);
       border-right: 2px solid darken($blue-light, 10%);
       border-radius: 20px;
+
+      @media (max-width: 450px) {
+        height: 2px;
+        border-right: none;
+        border-bottom: 2px solid darken($blue-light, 10%);
+        width: 100%;
+        border-radius: 0;
+      }
     }
   }
 
@@ -29,12 +43,20 @@
 
   .wrapper {
     padding: 40px;
+
+    @media (max-width: 450px) {
+      padding: 24px;
+    }
   }
 
   .title {
     font-weight: 800;
     font-size: 30px;
     margin-bottom: 24px;
+
+    @media (max-width: 450px) {
+      font-size: 24px;
+    }
   }
 
   .form {
@@ -42,13 +64,43 @@
     align-items: center;
     gap: 16px;
 
+    .actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    @media (max-width: 1000px) {
+      flex-direction: column !important;
+      align-items: flex-start;
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .filter {
+          width: 100%;
+
+          button {
+            min-width: 100% !important;
+          }
+        }
+
+        .submit {
+          min-width: 100% !important;
+        }
+      }
+    }
+
     .iconSearch {
       color: $gray;
       margin-right: 10px;
     }
 
     .filter {
-      min-width: 60px;
+      button {
+        min-width: 60px;
+      }
     }
 
     .field {

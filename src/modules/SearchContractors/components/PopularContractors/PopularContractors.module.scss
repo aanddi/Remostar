@@ -6,6 +6,10 @@
   border-radius: 16px;
   padding: 24px 0;
 
+  @media (max-width: 1000px) {
+    display: none;
+  }
+
   .title {
     text-align: center;
     font-weight: 700;

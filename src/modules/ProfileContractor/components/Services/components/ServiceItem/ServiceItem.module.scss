@@ -4,16 +4,29 @@
   background-color: $blue-light;
   border-radius: 20px;
 
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 
   &:hover {
     background-color: darken($blue-light, 5%);
   }
 
   .wrapper {
-    display: flex;
+    display: grid;
     align-items: center;
+    grid-template-columns: 5fr 1fr;
     padding: 20px;
+
+    @media (max-width: 950px) {
+      grid-template-columns: 5fr 1fr;
+    }
+
+    @media (max-width: 750px) {
+      grid-template-columns: 3fr 1fr;
+    }
+
+    @media (max-width: 550px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .title,
@@ -22,15 +35,31 @@
     font-size: 18px;
   }
 
-  .salary {
-    text-align: center;
-    width: 200px;
+  .content {
+    .desc {
+      margin-top: 8px;
+      text-align: justify;
+      width: 90%;
+      color: darken($gray, 20%);
+    }
+
+    @media (max-width: 550px) {
+      order: 2;
+
+      .desc {
+        width: 100%;
+      }
+    }
   }
 
-  .desc {
-    margin-top: 8px;
-    text-align: justify;
-    width: 80%;
-    color: darken($gray, 20%);
+  .salary {
+    text-align: center;
+
+    @media (max-width: 550px) {
+      order: 1;
+      align-items: flex-start;
+      text-align: start;
+      margin-bottom: 8px;
+    }
   }
 }
