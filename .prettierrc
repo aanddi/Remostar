@@ -1,26 +1,4 @@
 {
-  "plugins": ["@trivago/prettier-plugin-sort-imports"],
-  "printWidth": 100,
   "singleQuote": true,
-  "trailingComma": "all",
-
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true,
-  "importOrder": [
-    "<THIRD_PARTY_MODULES>",
-
-    "^@modules",
-    "^@components",
-
-    "^@common",
-    "^@routes",
-    "^@store",
-    "^@styles",
-    "^@assets",
-    "^antd",
-    "^react-icons",
-    "^./components",
-    "^./(.*)",
-    "^../(.*)"
-  ]
+  "trailingComma": "all"
 }
