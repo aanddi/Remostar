@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  //  provider = "postgresql"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        String   @id @default(uuid()) @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("update_at")
+
+  roleId Int   @map("role_id")
+  role   Roles @relation(fields: [roleId], references: [id])
+
+  name       String
+  surname    String
+  patronymic String?
+  gender     String?
+  birthday   String?
+  pathImage  String?
+  email      String?
+
+  phone    String  @unique
+  password String?
+
+  isLoginPhone Boolean
+
+  employee ContractorsEmployees?
+
+  @@map("users")
+}
+
+model Roles {
+  id   Int     @id @default(autoincrement()) @map("role_id")
+  name String  @unique @map("role_name")
+  desc String? @map("role_desc")
+
+  Users Users[]
+
+  @@map("roles")
+}
+
+model Contractors {
+  id        String   @id @default(uuid()) @map("contractor_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("update_at")
+
+  legalName      String  @map("legal_name")
+  name           String
+  veryfi         Boolean
+  typeCompany    String  @map("type_company")
+  pathLogo       String?
+  mainCity       String  @map("main_city")
+  adress         String?
+  citys          String?
+  countEmployees Int?    @map("count_employees")
+  phone          String
+  email          String?
+  cite           String?
+  inn            String  @unique
+  descCompany    String? @map("desc_company")
+  tags           String?
+
+  employee ContractorsEmployees[]
+
+  @@map("contractors")
+}
+
+model ContractorsEmployees {
+  id        String   @id @default(uuid()) @map("employee_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updateAt  DateTime @updatedAt @map("update_at")
+
+  user   Users  @relation(fields: [userId], references: [id])
+  userId String @unique @map("user_id")
+
+  employeesRole   EmployeesRoles @relation(fields: [employeesRoleId], references: [id])
+  employeesRoleId Int            @map("employees_roles_id")
+
+  Contractors  Contractors? @relation(fields: [contractorId], references: [id])
+  contractorId String
+
+  @@map("contractors_employees")
+}
+
+model EmployeesRoles {
+  id   Int     @id @default(autoincrement()) @map("employee_role_id")
+  name String  @unique @map("role_name")
+  desc String? @map("role_desc")
+
+  ContractorsEmployees ContractorsEmployees[]
+
+  @@map("employees_roles")
+}
