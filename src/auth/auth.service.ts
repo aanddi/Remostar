@@ -8,6 +8,7 @@ import { LoginPasswordDto, LoginPhoneDto } from './dto/login.dto';
 import { hash, verify } from 'argon2';
 import { RefreshTokenDto } from './dto/tokens.dto';
 import { otpGenerateDto, otpVerificationDto } from './dto/otp.dto';
+import { Users, Roles as RolesUser, ContractorsEmployees, EmployeesRoles } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -39,44 +40,8 @@ export class AuthService {
 
     const tokens = await this.generateTokens(user.id);
 
-    if (user.role.name === Roles.Employee) {
-      return {
-        user: {
-          id: user.id,
-          pathImage: user.pathImage,
-          employee: {
-            employeeId: user.employee.id,
-            contractorId: user.employee.contractorId,
-          },
-          roles: {
-            userRole: {
-              roleId: user.roleId,
-              roleName: user.role.name,
-              roleDesc: user.role.desc,
-            },
-            employeeRole: {
-              roleId: user.employee.employeesRoleId,
-              roleName: user.employee.employeesRole.name,
-              roleDesc: user.employee.employeesRole.name,
-            },
-          },
-        },
-        ...tokens,
-      };
-    }
-
     return {
-      user: {
-        id: user.id,
-        pathImage: user.pathImage,
-        roles: {
-          userRole: {
-            roleId: user.roleId,
-            roleName: user.role.name,
-            roleDesc: user.role.desc,
-          },
-        },
-      },
+      user: this.returnUserField(user, user.role, user.employee, user.employee.employeesRole),
       ...tokens,
     };
   }
@@ -98,44 +63,8 @@ export class AuthService {
 
     const tokens = await this.generateTokens(user.id);
 
-    if (user.role.name === Roles.Employee) {
-      return {
-        user: {
-          id: user.id,
-          pathImage: user.pathImage,
-          employee: {
-            employeeId: user.employee.id,
-            contractorId: user.employee.contractorId,
-          },
-          roles: {
-            userRole: {
-              roleId: user.roleId,
-              roleName: user.role.name,
-              roleDesc: user.role.desc,
-            },
-            employeeRole: {
-              roleId: user.employee.employeesRoleId,
-              roleName: user.employee.employeesRole.name,
-              roleDesc: user.employee.employeesRole.name,
-            },
-          },
-        },
-        ...tokens,
-      };
-    }
-
     return {
-      user: {
-        id: user.id,
-        pathImage: user.pathImage,
-        roles: {
-          userRole: {
-            roleId: user.roleId,
-            roleName: user.role.name,
-            roleDesc: user.role.desc,
-          },
-        },
-      },
+      user: this.returnUserField(user, user.role, user.employee, user.employee.employeesRole),
       ...tokens,
     };
   }
@@ -168,18 +97,8 @@ export class AuthService {
     const tokens = await this.generateTokens(newUser.id);
 
     return {
-      user: {
-        id: newUser.id,
-        pathImage: newUser.pathImage,
-        roles: {
-          userRole: {
-            roleId: newUser.roleId,
-            roleName: role.name,
-            roleDesc: role.desc,
-          },
-        },
-        ...tokens,
-      },
+      user: this.returnUserField(newUser, role),
+      ...tokens,
     };
   }
 
@@ -228,8 +147,6 @@ export class AuthService {
       },
     });
 
-    console.log(roleEmployee);
-
     const newEmployee = await this.prisma.contractorsEmployees.create({
       data: {
         userId: newUser.id,
@@ -241,27 +158,8 @@ export class AuthService {
     const tokens = await this.generateTokens(newUser.id);
 
     return {
-      user: {
-        id: newUser.id,
-        pathName: newUser.pathImage,
-        employee: {
-          employeeId: newEmployee.id,
-          contractorId: newContractor.id,
-        },
-        roles: {
-          userRole: {
-            roleId: role.id,
-            roleName: role.name,
-            roleDesc: role.desc,
-          },
-          employeeRole: {
-            roleId: roleEmployee.id,
-            roleName: roleEmployee.name,
-            roleDesc: roleEmployee.desc,
-          },
-        },
-        ...tokens,
-      },
+      user: this.returnUserField(newUser, role, newEmployee, roleEmployee),
+      ...tokens,
     };
   }
 
@@ -324,44 +222,8 @@ export class AuthService {
 
     const tokens = await this.generateTokens(user.id);
 
-    if (user.role.name === Roles.Employee) {
-      return {
-        user: {
-          id: user.id,
-          pathImage: user.pathImage,
-          employee: {
-            employeeId: user.employee.id,
-            contractorId: user.employee.contractorId,
-          },
-          roles: {
-            userRole: {
-              roleId: user.roleId,
-              roleName: user.role.name,
-              roleDesc: user.role.desc,
-            },
-            employeeRole: {
-              roleId: user.employee.employeesRoleId,
-              roleName: user.employee.employeesRole.name,
-              roleDesc: user.employee.employeesRole.name,
-            },
-          },
-        },
-        ...tokens,
-      };
-    }
-
     return {
-      user: {
-        id: user.id,
-        pathImage: user.pathImage,
-        roles: {
-          userRole: {
-            roleId: user.roleId,
-            roleName: user.role.name,
-            roleDesc: user.role.desc,
-          },
-        },
-      },
+      user: this.returnUserField(user, user.role, user.employee, user.employee.employeesRole),
       ...tokens,
     };
   }
@@ -378,5 +240,51 @@ export class AuthService {
     });
 
     return { accessToken, refreshToken };
+  }
+
+  private returnUserField(
+    user: Users,
+    role: RolesUser,
+    employee?: ContractorsEmployees,
+    employeesRole?: EmployeesRoles,
+  ) {
+    if (role.name === Roles.Employee) {
+      return {
+        id: user.id,
+        name: user.name,
+        surname: user.surname,
+        pathImage: user.pathImage,
+        employee: {
+          employeeId: employee.id,
+          contractorId: employee.contractorId,
+        },
+        roles: {
+          userRole: {
+            roleId: user.roleId,
+            roleName: role.name,
+            roleDesc: role.desc,
+          },
+          employeeRole: {
+            roleId: employeesRole.id,
+            roleName: employeesRole.name,
+            roleDesc: employeesRole.name,
+          },
+        },
+      };
+    }
+
+    return {
+      id: user.id,
+      name: user.name,
+      surname: user.surname,
+      pathImage: user.pathImage,
+      roles: {
+        userRole: {
+          roleId: role.id,
+          roleName: role.name,
+          roleDesc: role.desc,
+        },
+      },
+    };
   }
 }
