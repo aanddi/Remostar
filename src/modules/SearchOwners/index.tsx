@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { AnnouncementCard, Ribbon, Search } from '@common';
-import useModal from '@common/hooks/useModal';
+import { AnnouncementCard, Ribbon, Search } from '@common/components';
+import { useModal } from '@common/hooks';
 
 import FilterModal from './components/modal/Filter';
 

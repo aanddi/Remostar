@@ -4,9 +4,9 @@ import { IAside } from '@modules/AboutTender/type';
 
 import { Button } from '@components';
 
-import { Verify } from '@common';
+import { Verify } from '@common/components';
 import { Heart, Map, MessageReport } from '@common/icon';
-import { formatNumber } from '@common/utils/formatter';
+import { formatNumber } from '@common/utils';
 
 import { Avatar } from 'antd';
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Breadcrumb, Button, Image } from '@components';
 
-import { Verify } from '@common';
+import { Verify } from '@common/components';
 import { Add } from '@common/icon';
 
 import styles from './Header.module.scss';

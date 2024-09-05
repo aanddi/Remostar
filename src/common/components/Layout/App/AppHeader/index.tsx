@@ -3,16 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { Button } from '@components';
 
-import ModalCitys from '@common/components/CitysModal';
-import ModalLogin from '@common/components/LoginModal';
-import useModal from '@common/hooks/useModal';
+import { useAppSelector, useAuth, useModal, useModalCitys, useModalLogin } from '@common/hooks';
 import { Login, Map } from '@common/icon';
-
-import { useAppSelector } from '@store/hooks';
 
 import Logo from '@assets/Logo.svg?react';
 
 import { Layout } from 'antd';
+
+import ProfileMenu from './components/ProfileMenu';
 
 import styles from './AppHeader.module.scss';
 import menuData from './menu-data';
@@ -23,32 +21,26 @@ const AppHeader = () => {
   const location = useLocation();
 
   const { city } = useAppSelector((state) => state.citys);
+  const user = useAuth();
 
-  const [openMenu, setOpenMenu] = useState(false);
+  const { handleOpenModal: handleModalLogin } = useModalLogin();
+  const { handleOpenModal: handleModalCity } = useModalCitys();
 
-  const {
-    isOpenModal: isModalLoginOpen,
-    handleOpenModal: handleModalLogin,
-    handleCloseModal: handleCloseModalLogin,
-  } = useModal();
+  const [openMenuMobile, setOpenMenuMobile] = useState(false);
 
-  const {
-    isOpenModal: isModalCitysOpen,
-    handleOpenModal: handleModalCity,
-    handleCloseModal: handleCloseModalCitys,
-  } = useModal();
+  const { isOpenModal, handleOpenModal, handleCloseModal } = useModal();
 
   useEffect(() => {
-    if (openMenu) document.body.style.overflow = 'hidden';
+    if (openMenuMobile) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
 
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [openMenu]);
+  }, [openMenuMobile]);
 
   useEffect(() => {
-    setOpenMenu(false);
+    setOpenMenuMobile(false);
   }, [location.pathname]);
 
   return (
@@ -58,7 +50,7 @@ const AppHeader = () => {
           <Link to="/" className={styles.logo}>
             <Logo />
           </Link>
-          <div className={`${openMenu && styles.isOpenMenu} ${styles.content}`}>
+          <div className={`${openMenuMobile && styles.isOpenMenu} ${styles.content}`}>
             <div className={styles.wrapper}>
               <nav className={styles.menu}>
                 {menuData.map((item) => {
@@ -85,33 +77,39 @@ const AppHeader = () => {
                   size="large"
                   className={styles.city}
                   icon={<Map size={18} />}
-                  onClick={handleModalCity}
+                  onClick={() => handleModalCity()}
                 >
                   {city}
                 </Button>
-                <Button
-                  type="text"
-                  size="large"
-                  className={styles.login}
-                  icon={<Login size={18} />}
-                  onClick={handleModalLogin}
-                >
-                  Войти
-                </Button>
+                {user ? (
+                  <ProfileMenu
+                    openModal={isOpenModal}
+                    handleOpenModal={handleOpenModal}
+                    handleCloseModal={handleCloseModal}
+                  />
+                ) : (
+                  <Button
+                    type="text"
+                    size="large"
+                    className={styles.login}
+                    icon={<Login size={18} />}
+                    onClick={() => handleModalLogin()}
+                  >
+                    Войти
+                  </Button>
+                )}
               </div>
             </div>
           </div>
           <button
-            onClick={() => setOpenMenu(!openMenu)}
-            className={`${openMenu && styles.isOpen} ${styles.burgerButton}`}
+            onClick={() => setOpenMenuMobile(!openMenuMobile)}
+            className={`${openMenuMobile && styles.isOpen} ${styles.burgerButton}`}
             aria-label="Открыть меню"
           >
             <span />
           </button>
         </div>
       </div>
-      <ModalLogin open={isModalLoginOpen} onCancel={handleCloseModalLogin} />
-      <ModalCitys open={isModalCitysOpen} onCancel={handleCloseModalCitys} />
     </Header>
   );
 };

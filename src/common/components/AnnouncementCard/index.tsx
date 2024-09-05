@@ -5,9 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Button, Image } from '@components';
 
-import { Verify } from '@common';
+import { Verify } from '@common/components';
 import { Heart, Map, MessageReport } from '@common/icon';
-import { formatNumber } from '@common/utils/formatter';
+import { formatNumber } from '@common/utils';
 
 import { Image as AntdImage, Avatar, Tag, Tooltip, Watermark } from 'antd';
 

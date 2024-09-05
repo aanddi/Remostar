@@ -2,7 +2,8 @@ import React, { useCallback, useState } from 'react';
 
 import { Button, Modal } from '@components';
 
-import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { useAppDispatch, useAppSelector } from '@common/hooks';
+
 import { set } from '@store/slices/citys.slice';
 
 import styles from './ModalCitys.module.scss';
