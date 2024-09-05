@@ -1,54 +1,59 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import { Button, Input, InputPassword } from '@components';
+import { Button, InputPassword, InputPhone } from '@components';
+import ErrorMessage from '@components/Form/ErrorMessage';
 
-import styles from '../Form.module.scss';
+import { ILoginPassword } from '@common/api/services/auth/types/login.type';
+import { useModalLogin } from '@common/hooks';
 
-interface IPasswordLogin {
-  login: string;
-  password: string;
-}
+import styles from './Password.module.scss';
+
+import { useLoginPassword } from '../../model';
 
 const PasswordLogin = () => {
   const {
     control,
     handleSubmit,
     formState: { isValid, errors },
-  } = useForm<IPasswordLogin>({
+  } = useForm<ILoginPassword>({
     mode: 'onChange',
   });
 
-  const handleIPasswordLogin = useCallback((data: IPasswordLogin) => {
-    console.log(data);
-  }, []);
+  const { handleCloseModal } = useModalLogin();
+  const { mutate: loginUser, isPending, error } = useLoginPassword(handleCloseModal);
 
-  console.log(errors.login?.message);
+  const handleIPasswordLogin = (data: ILoginPassword) => {
+    loginUser(data);
+  };
 
   return (
     <form onSubmit={handleSubmit(handleIPasswordLogin)} className={styles.form}>
       <Controller
-        name="login"
+        name="phone"
         control={control}
-        rules={{ required: 'Введите логин' }}
-        render={({ field }) => (
-          <Input label="Логин" isRequired error={errors.login?.message} {...field} />
-        )}
+        rules={{
+          validate: {
+            minLength: (value) => String(value).length > 17,
+          },
+        }}
+        render={({ field }) => <InputPhone label="Номер телефона" inputField={field} />}
       />
       <Controller
         name="password"
         control={control}
         rules={{
           required: 'Введите пароль',
-          minLength: { value: 10, message: 'Пароль должен содержать не менее 10 символов' },
+          minLength: { value: 6, message: 'Пароль должен содержать не менее 6 символов' },
         }}
         render={({ field }) => (
-          <InputPassword label="Пароль" isRequired error={errors.password?.message} {...field} />
+          <InputPassword label="Пароль" error={errors.password?.message} {...field} />
         )}
       />
-      <Button disabled={!isValid} size="large" type="primary" htmlType="submit">
+      <Button disabled={!isValid} size="large" type="primary" htmlType="submit" loading={isPending}>
         Войти
       </Button>
+      <ErrorMessage message={error?.response?.data?.message} />
     </form>
   );
 };

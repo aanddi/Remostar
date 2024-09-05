@@ -11,6 +11,7 @@ export { default as Modal } from './Modal';
 export { default as Segmented } from './Segmented';
 
 export { default as Input } from './Form/Input';
+export { default as InputPhone } from './Form/InputPhone';
 export { default as InputNumber } from './Form/InputNumber';
 export { default as InputOtp } from './Form/InputOtp';
 export { default as InputPassword } from './Form/InputPassword';

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 
-import { AppFooter, AppHeader } from '@common';
+import { AppFooter, AppHeader } from '@common/components';
 
 import { ConfigProvider, FloatButton, Layout } from 'antd';
 import ruRU from 'antd/locale/ru_RU';

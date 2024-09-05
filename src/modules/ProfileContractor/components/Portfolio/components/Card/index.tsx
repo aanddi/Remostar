@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Button } from '@components';
 
-import { formatNumber } from '@common/utils/formatter';
+import { formatNumber } from '@common/utils';
 
 import { Avatar, Descriptions, Image, Watermark } from 'antd';
 

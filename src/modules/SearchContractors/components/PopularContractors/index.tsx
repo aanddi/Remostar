@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Verify } from '@common';
+import { Verify } from '@common/components';
 
 import { Avatar, Typography } from 'antd';
 

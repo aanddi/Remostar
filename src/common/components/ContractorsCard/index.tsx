@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { Button } from '@components';
 
-import { Verify } from '@common';
+import { Verify } from '@common/components';
 import { Briefcase, Heart, Map, Message, MessageReport, Star } from '@common/icon';
 
 import { Avatar, Tag, Tooltip, Typography } from 'antd';

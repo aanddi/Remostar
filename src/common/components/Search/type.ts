@@ -7,7 +7,6 @@ interface ISearchProps {
 
 interface ISearch {
   searchField: string;
-  searchCity: string;
 }
 
 export type { ISearchProps, ISearch };

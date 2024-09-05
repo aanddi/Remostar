@@ -1,0 +1,6 @@
+@import '/src/styles/variables.scss';
+@import '../Form.scss';
+
+.input {
+  @include ui-field;
+}

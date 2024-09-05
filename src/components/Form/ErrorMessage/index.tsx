@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Typography } from 'antd';
+
 import styles from './ErrorMessage.module.scss';
 
 interface IErrorMessageProps {
@@ -7,7 +9,11 @@ interface IErrorMessageProps {
 }
 
 const ErrorMessage = ({ message }: IErrorMessageProps) => {
-  return <div className={styles.error}>{message}</div>;
+  return (
+    <Typography.Text type="danger" className={styles.error}>
+      {message}
+    </Typography.Text>
+  );
 };
 
 export default ErrorMessage;

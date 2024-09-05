@@ -1,13 +1,12 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 import { Button, Input } from '@components';
 
+import { useAppSelector, useModalCitys } from '@common/hooks';
 import { Filter, Map } from '@common/icon';
 
-import { useAppSelector } from '@store/hooks';
-
-import { Badge, Tooltip, Typography } from 'antd';
+import { Badge, Typography } from 'antd';
 
 import { FiSearch } from 'react-icons/fi';
 
@@ -15,13 +14,11 @@ import styles from './Seacr.module.scss';
 import { ISearch, ISearchProps } from './type';
 
 const Search = ({ title, onSearch, onOpenFilter, totalCountFilter }: ISearchProps) => {
+  const { control, getValues } = useForm<ISearch>();
+
+  const { handleOpenModal: handleModalCity } = useModalCitys();
+
   const { city } = useAppSelector((state) => state.citys);
-
-  const { control, getValues, setValue } = useForm<ISearch>();
-
-  useEffect(() => {
-    setValue('searchCity', city);
-  }, [city, setValue]);
 
   const handleFilter = useCallback(() => {
     onOpenFilter?.();
@@ -50,29 +47,21 @@ const Search = ({ title, onSearch, onOpenFilter, totalCountFilter }: ISearchProp
                 />
               )}
             />
-            <div className={styles.delimiter} />
-            <Controller
-              name="searchCity"
-              control={control}
-              render={({ field }) => (
-                <Input
-                  placeholder="Город"
-                  size="large"
-                  prefix={<Map className={styles.iconSearch} size={18} />}
-                  className={styles.field}
-                  {...field}
-                />
-              )}
-            />
           </div>
           <div className={styles.actions}>
+            <Button
+              type="default"
+              size="large"
+              icon={<Map size={18} />}
+              onClick={() => handleModalCity()}
+            >
+              {city}
+            </Button>
             {onOpenFilter && (
               <Badge count={totalCountFilter} className={styles.filter}>
-                <Tooltip title="Фильтр">
-                  <Button type="default" size="large" onClick={handleFilter}>
-                    <Filter size={20} />
-                  </Button>
-                </Tooltip>
+                <Button type="default" size="large" onClick={handleFilter}>
+                  <Filter size={20} />
+                </Button>
               </Badge>
             )}
             <Button type="primary" size="large" onClick={handleSearch} className={styles.submit}>

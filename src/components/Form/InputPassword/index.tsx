@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 
-import { Input, InputProps } from 'antd';
+import { Input, InputProps, InputRef } from 'antd';
 
 import './InputPassword.scss';
 
@@ -16,32 +16,35 @@ interface IPasswordProps extends InputProps {
   error?: string;
 }
 
-const InputPassword = ({
-  className,
-  error,
-  isRequired = false,
-  label,
-  ...restProps
-}: IPasswordProps) => {
-  const field = useMemo(
-    () => <Password className="inputPassword" status={error && 'error'} {...restProps} />,
-    [error, restProps],
-  );
-
-  if (label) {
-    return (
-      <WrapperWithLabel
-        label={label}
-        formItem={field}
-        value={!!restProps.value}
-        name={restProps.name}
-        error={error}
-        isRequired={isRequired}
-      />
+const InputPassword = forwardRef<InputRef, IPasswordProps>(
+  ({ className, error, isRequired = false, label, ...restProps }, ref) => {
+    const field = useMemo(
+      () => (
+        <Password
+          ref={ref}
+          className={`inputPassword ${className}`}
+          status={error ? 'error' : undefined}
+          {...restProps}
+        />
+      ),
+      [ref, className, error, restProps],
     );
-  }
 
-  return field;
-};
+    if (label) {
+      return (
+        <WrapperWithLabel
+          label={label}
+          formItem={field}
+          value={!!restProps.value}
+          name={restProps.name}
+          error={error}
+          isRequired={isRequired}
+        />
+      );
+    }
+
+    return field;
+  },
+);
 
 export default InputPassword;

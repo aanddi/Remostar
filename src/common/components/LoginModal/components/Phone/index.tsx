@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 
-import PhoneNumber from './PhoneNumber';
-import Verification from './Verification';
+import { IOtpGenerateResponse } from '@common/api/services/auth/types/otp.type';
+
+import PhoneNumber from './components/PhoneNumber';
+import Verification from './components/Verification/Verification';
 
 const PhoneLogin = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [responseGenerateOtp, setResponseGenerateOtp] = useState<IOtpGenerateResponse | null>(null);
   return (
     <div>
-      {phoneNumber ? (
-        <Verification phone={phoneNumber} setVerification={setPhoneNumber} />
+      {responseGenerateOtp ? (
+        <Verification
+          responseGenerateOtp={responseGenerateOtp}
+          setVerification={setResponseGenerateOtp}
+        />
       ) : (
-        <PhoneNumber setPhoneNumber={setPhoneNumber} />
+        <PhoneNumber setResponseGenerateOtp={setResponseGenerateOtp} />
       )}
     </div>
   );

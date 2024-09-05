@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+
+  .back {
+    min-width: 35px !important;
+    position: absolute;
+    top: -120px;
+    left: 0;
+    border-radius: 100px;
+  }
+}
