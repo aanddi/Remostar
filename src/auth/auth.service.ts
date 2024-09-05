@@ -2,12 +2,12 @@ import { BadRequestException, ForbiddenException, Injectable, UnauthorizedExcept
 import { RegisterOwnerDto, RegisterContractorsDto } from './dto/register.dto';
 
 import { PrismaService } from 'src/prisma.service';
-import { JwtService } from '@nestjs/jwt';
+import { JwtService, TokenExpiredError } from '@nestjs/jwt';
 import { Roles, RolesEmployee } from './types/roles.type';
 import { LoginPasswordDto, LoginPhoneDto } from './dto/login.dto';
 import { hash, verify } from 'argon2';
 import { RefreshTokenDto } from './dto/tokens.dto';
-import { otpGenerateDto, otpVerificationDto } from './dto/otp.dto';
+import { OtpGenerateDto, OtpVerificationDto } from './dto/otp.dto';
 import { Users, Roles as RolesUser, ContractorsEmployees, EmployeesRoles } from '@prisma/client';
 
 @Injectable()
@@ -163,7 +163,7 @@ export class AuthService {
     };
   }
 
-  async otpGenerate(dto: otpGenerateDto, user: string) {
+  async otpGenerate(dto: OtpGenerateDto, user: string) {
     if (user === 'existing') {
       const checkPhone = await this.prisma.users.findUnique({
         where: {
@@ -189,9 +189,9 @@ export class AuthService {
     };
   }
 
-  async otpVerification(dto: otpVerificationDto) {
+  async otpVerification(dto: OtpVerificationDto) {
     // делаем фейк запрос к нашему сервису, передаем туда sessionId и условно получаем валидный код
-    const validCode = 47621;
+    const validCode = '47621';
 
     if (validCode !== dto.code) throw new BadRequestException('Неверный код');
 
@@ -202,9 +202,17 @@ export class AuthService {
   }
 
   async getNewTokens(dto: RefreshTokenDto) {
-    const payload = await this.jwt.verifyAsync(dto.refreshToken);
+    let payload;
 
-    if (!payload) throw new UnauthorizedException('RefreshToken не валидный');
+    try {
+      payload = await this.jwt.verifyAsync(dto.refreshToken);
+    } 
+    catch (error) {
+      if (error instanceof TokenExpiredError) {
+        throw new UnauthorizedException('RefreshToken истек');
+      }
+      throw new UnauthorizedException('RefreshToken не валидный');
+    }
 
     const user = await this.prisma.users.findUnique({
       where: {
@@ -267,7 +275,7 @@ export class AuthService {
           employeeRole: {
             roleId: employeesRole.id,
             roleName: employeesRole.name,
-            roleDesc: employeesRole.name,
+            roleDesc: employeesRole.desc,
           },
         },
       };

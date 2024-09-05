@@ -1,9 +1,12 @@
-export interface otpGenerateDto {
+import { IsString } from 'class-validator';
+
+export class OtpGenerateDto {
+  @IsString({ message: 'Пароль должен быть строкой' })
   phone: string;
 }
 
-export interface otpVerificationDto {
+export interface OtpVerificationDto {
   phone: string;
-  code: number;
+  code: string;
   sessionId: string;
 }

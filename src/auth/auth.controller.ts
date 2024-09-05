@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { RegisterContractorsDto, RegisterOwnerDto } from './dto/register.dto';
 import { LoginPasswordDto, LoginPhoneDto } from './dto/login.dto';
 import { RefreshTokenDto } from './dto/tokens.dto';
-import { otpGenerateDto, otpVerificationDto } from './dto/otp.dto';
+import { OtpGenerateDto, OtpVerificationDto } from './dto/otp.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -45,14 +45,14 @@ export class AuthController {
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('/otp/generate')
-  async otpGenerate(@Query('user') user: string, @Body() dto: otpGenerateDto) {
+  async otpGenerate(@Query('user') user: string, @Body() dto: OtpGenerateDto) {
     return this.authService.otpGenerate(dto, user);
   }
 
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('/otp/verification')
-  async otpVerification(@Body() dto: otpVerificationDto) {
+  async otpVerification(@Body() dto: OtpVerificationDto) {
     return this.authService.otpVerification(dto);
   }
 }

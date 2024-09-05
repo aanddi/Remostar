@@ -5,8 +5,6 @@ export class LoginPhoneDto {
   phone: string;
 }
 
-
-
 export class LoginPasswordDto {
   phone: string;
   password: string;
