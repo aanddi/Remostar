@@ -11,7 +11,7 @@ import {
 import { IAuthResponse } from '@common/api/services/auth/types/user.type';
 import { useAppDispatch } from '@common/hooks';
 
-import { setUser } from '@store/slices/user.slice';
+import { loginUser } from '@store/slices/user.slice';
 
 const useLoginPassword = (handleCloseModal: () => void) => {
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ const useLoginPassword = (handleCloseModal: () => void) => {
       return AuthServices.loginPassword(data);
     },
     onSuccess: (data: IAuthResponse) => {
-      dispatch(setUser(data.user));
+      dispatch(loginUser(data));
       handleCloseModal();
     },
     onError: (err: any) => {
@@ -65,7 +65,7 @@ const useLoginPhone = (handleCloseModal: () => void) => {
       return AuthServices.loginPhone(data);
     },
     onSuccess: (data: IAuthResponse) => {
-      dispatch(setUser(data.user));
+      dispatch(loginUser(data));
       handleCloseModal();
     },
     onError: (err: any) => {

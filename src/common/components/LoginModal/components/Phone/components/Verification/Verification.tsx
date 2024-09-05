@@ -45,7 +45,12 @@ const Verification = ({ responseGenerateOtp, setVerification }: IVerificationpPr
   }, [generateOtp, responseGenerateOtp]);
 
   const handleVerification = (data: IOtpVerification) => {
-    otpVerification(data);
+    const newData = {
+      code: data.code,
+      phone: responseGenerateOtp.phone,
+      sessionSmsId: responseGenerateOtp.sessionSmsId,
+    };
+    otpVerification(newData);
 
     if (!error) loginPhone({ phone: responseGenerateOtp.phone });
   };

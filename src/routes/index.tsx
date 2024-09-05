@@ -36,202 +36,110 @@ export const ScrollToTop = ({ children }: PropsWithChildren) => {
 };
 
 const Router = () => {
-  const routesSite = useRoutes([
+  const routes = useRoutes([
+    {
+      path: '*',
+      element: <NotFoundPage />,
+    },
     {
       path: '/',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AboutPlatformPage />
-          </AppLayout>
-        </Suspense>
-      ),
+      element: <AboutPlatformPage />,
     },
     {
       path: '/contractors',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <SearchContractorsPage />
-          </AppLayout>
-        </Suspense>
-      ),
+      element: <SearchContractorsPage />,
     },
 
     {
       path: '/contractor/:id',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <ProfileContractorsPage />
-          </AppLayout>
-        </Suspense>
-      ),
+      element: <ProfileContractorsPage />,
     },
     {
       path: '/tenders',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <SearchOwnersPage />
-          </AppLayout>
-        </Suspense>
-      ),
+      element: <SearchOwnersPage />,
     },
     {
       path: '/tender/:id',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AboutTenderPage />
-          </AppLayout>
-        </Suspense>
-      ),
+      element: <AboutTenderPage />,
     },
     {
       path: '/register',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <RegistrationPage />
-          </AppLayout>
-        </Suspense>
-      ),
+      element: <RegistrationPage />,
     },
     {
       path: '/forbidden',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <ForbiddenPage />
-          </AppLayout>
-        </Suspense>
-      ),
+      element: <ForbiddenPage />,
     },
-  ]);
-
-  const profile = useRoutes([
     {
       path: '/profile',
       element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AuthProvider>
-              <ProfilePage />
-            </AuthProvider>
-          </AppLayout>
-        </Suspense>
+        <AuthProvider>
+          <ProfilePage />
+        </AuthProvider>
       ),
     },
     {
       path: '/employees',
       element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AuthProvider
-              protectionUser={[Roles.Owner]}
-              protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
-            >
-              <EmployeesPage />
-            </AuthProvider>
-          </AppLayout>
-        </Suspense>
+        <AuthProvider
+          protectionUser={[Roles.Owner]}
+          protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
+        >
+          <EmployeesPage />
+        </AuthProvider>
       ),
     },
     {
       path: '/objects',
       element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AuthProvider>
-              <ObjectsPage />
-            </AuthProvider>
-          </AppLayout>
-        </Suspense>
+        <AuthProvider>
+          <ObjectsPage />
+        </AuthProvider>
       ),
     },
     {
       path: '/announcements',
       element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AuthProvider protectionUser={[Roles.Employee]}>
-              <AnnouncementsPage />
-            </AuthProvider>
-          </AppLayout>
-        </Suspense>
+        <AuthProvider protectionUser={[Roles.Employee]}>
+          <AnnouncementsPage />
+        </AuthProvider>
       ),
     },
     {
       path: '/chats',
       element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AuthProvider>
-              <ChatsPage />
-            </AuthProvider>
-          </AppLayout>
-        </Suspense>
+        <AuthProvider>
+          <ChatsPage />
+        </AuthProvider>
       ),
     },
     {
       path: '/favorites',
       element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AuthProvider>
-              <FavoritesPage />
-            </AuthProvider>
-          </AppLayout>
-        </Suspense>
+        <AuthProvider>
+          <FavoritesPage />
+        </AuthProvider>
       ),
     },
     {
       path: '/company',
       element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <AuthProvider
-              protectionUser={[Roles.Owner]}
-              protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
-            >
-              <MyCompanyPage />
-            </AuthProvider>
-          </AppLayout>
-        </Suspense>
-      ),
-    },
-    {
-      path: '*',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <NotFoundPage />
-          </AppLayout>
-        </Suspense>
-      ),
-    },
-  ]);
-
-  const notFound = useRoutes([
-    {
-      path: '*',
-      element: (
-        <Suspense fallback={<FullScreenLoader />}>
-          <AppLayout>
-            <NotFoundPage />
-          </AppLayout>
-        </Suspense>
+        <AuthProvider
+          protectionUser={[Roles.Owner]}
+          protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
+        >
+          <MyCompanyPage />
+        </AuthProvider>
       ),
     },
   ]);
 
   return (
-    <ScrollToTop>
-      {routesSite}
-      {profile}
-      {notFound}
-    </ScrollToTop>
+    <Suspense fallback={<FullScreenLoader />}>
+      <ScrollToTop>
+        <AppLayout>{routes}</AppLayout>
+      </ScrollToTop>
+    </Suspense>
   );
 };
 
