@@ -4,19 +4,19 @@ interface IOtpGenerate {
 
 interface IOtpGenerateResponse {
   phone: string;
-  sessionId: string;
+  sessionSmsId: string;
 }
 
 interface IOtpVerification {
   phone: string;
   code: string;
-  sessionId: string;
+  sessionSmsId: string;
 }
 
 interface IOtpVerificationResponse {
   phone: string;
   code: string;
-  sessionId: string;
+  sessionSmsId: string;
 }
 
 export type { IOtpGenerate, IOtpGenerateResponse, IOtpVerification, IOtpVerificationResponse };

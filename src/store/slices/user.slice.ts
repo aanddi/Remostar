@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { User } from '@common/api/services/auth/types/user.type';
-import { deleteAuthTokens } from '@common/utils';
+import { IAuthResponse, User } from '@common/api/services/auth/types/user.type';
+import { deleteAuthTokens, setAuthTokens } from '@common/utils';
 import getLocalStorage from '@common/utils/localStorage/getLocalStorage';
 
 export interface IInitialState {
@@ -16,12 +16,14 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (_state, action: PayloadAction<User>) => {
+    loginUser: (_state, action: PayloadAction<IAuthResponse>) => {
+      setAuthTokens(action.payload.accessToken, action.payload.refreshToken);
       return {
         ..._state,
-        user: action.payload,
+        user: action.payload.user,
       };
     },
+
     logoutUser: () => {
       deleteAuthTokens();
       return {
@@ -31,6 +33,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, logoutUser } = userSlice.actions;
+export const { loginUser, logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
