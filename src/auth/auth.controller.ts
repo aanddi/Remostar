@@ -45,8 +45,8 @@ export class AuthController {
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('/otp/generate')
-  async otpGenerate(@Query('user') user: string, @Body() dto: OtpGenerateDto) {
-    return this.authService.otpGenerate(dto, user);
+  async otpGenerate(@Query('type') type: string, @Body() dto: OtpGenerateDto) {
+    return this.authService.otpGenerate(dto, type);
   }
 
   @UsePipes(new ValidationPipe())

@@ -8,7 +8,6 @@ export interface RegisterOwnerDto {
 }
 
 export class RegisterContractorsDto {
-  legalName: string;
   nameCompany: string;
   typeCompany: string;
   mainCity: string;

@@ -117,7 +117,7 @@ export class AuthService {
 
     const checkInn = await this.prisma.contractors.findUnique({
       where: {
-        inn: dto.inn,
+        inn: String(dto.inn),
       },
     });
 
@@ -137,12 +137,11 @@ export class AuthService {
 
     const newContractor = await this.prisma.contractors.create({
       data: {
-        legalName: dto.legalName,
         name: dto.nameCompany,
         typeCompany: dto.typeCompany,
         mainCity: dto.mainCity,
         phone: dto.phone,
-        inn: dto.inn,
+        inn: String(dto.inn),
         veryfi: false,
       },
     });
@@ -163,17 +162,18 @@ export class AuthService {
     };
   }
 
-  async otpGenerate(dto: OtpGenerateDto, user: string) {
-    if (user === 'existing') {
-      const checkPhone = await this.prisma.users.findUnique({
-        where: {
-          phone: dto.phone,
-        },
-      });
+  async otpGenerate(dto: OtpGenerateDto, type: string) {
+    const checkPhone = await this.prisma.users.findUnique({
+      where: {
+        phone: dto.phone,
+      },
+    });
 
+    if (type === 'login') {
       if (!checkPhone) throw new BadRequestException('Пользователь с таким номером не зарегистрирован');
-
       if (!checkPhone.isLoginPhone) throw new ForbiddenException('Вход по телефону запрещен для этого пользователя');
+    } else if (type === 'register') {
+      if (checkPhone) throw new BadRequestException('Пользователь с таким номером уже зарегистрирован');
     }
 
     // в теории сейчас должен отправляться запрос на сторонний платный api сервис для отправки смс на телефон,
@@ -206,8 +206,7 @@ export class AuthService {
 
     try {
       payload = await this.jwt.verifyAsync(dto.refreshToken);
-    } 
-    catch (error) {
+    } catch (error) {
       if (error instanceof TokenExpiredError) {
         throw new UnauthorizedException('RefreshToken истек');
       }

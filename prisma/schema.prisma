@@ -49,7 +49,7 @@ model Contractors {
   createdAt DateTime @default(now()) @map("created_at")
   updateAt  DateTime @updatedAt @map("update_at")
 
-  legalName      String  @map("legal_name")
+  legalName      String?  @map("legal_name")
   name           String
   veryfi         Boolean
   typeCompany    String  @map("type_company")
