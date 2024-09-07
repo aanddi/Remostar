@@ -2,7 +2,7 @@ import React, { PropsWithChildren, Suspense, lazy, useLayoutEffect } from 'react
 import { useLocation, useRoutes } from 'react-router-dom';
 
 import { Roles, RolesEmployee } from '@common/api/services/auth/types/user.type';
-import { AppLayout } from '@common/components';
+import { AppLayout, AuthLayout } from '@common/components';
 import FullScreenLoader from '@common/components/FullScreenLoader';
 import AuthProvider from '@common/providers/AuthProvider';
 
@@ -39,106 +39,151 @@ const Router = () => {
   const routes = useRoutes([
     {
       path: '*',
-      element: <NotFoundPage />,
+      element: (
+        <AppLayout>
+          <NotFoundPage />
+        </AppLayout>
+      ),
     },
     {
       path: '/',
-      element: <AboutPlatformPage />,
+      element: (
+        <AppLayout>
+          <AboutPlatformPage />
+        </AppLayout>
+      ),
+    },
+    {
+      path: '/register',
+      element: (
+        <AuthLayout>
+          <RegistrationPage />
+        </AuthLayout>
+      ),
     },
     {
       path: '/contractors',
-      element: <SearchContractorsPage />,
+      element: (
+        <AppLayout>
+          <SearchContractorsPage />
+        </AppLayout>
+      ),
     },
 
     {
       path: '/contractor/:id',
-      element: <ProfileContractorsPage />,
+      element: (
+        <AppLayout>
+          <ProfileContractorsPage />
+        </AppLayout>
+      ),
     },
     {
       path: '/tenders',
-      element: <SearchOwnersPage />,
+      element: (
+        <AppLayout>
+          <SearchOwnersPage />
+        </AppLayout>
+      ),
     },
     {
       path: '/tender/:id',
-      element: <AboutTenderPage />,
+      element: (
+        <AppLayout>
+          <AboutTenderPage />
+        </AppLayout>
+      ),
     },
-    {
-      path: '/register',
-      element: <RegistrationPage />,
-    },
+
     {
       path: '/forbidden',
-      element: <ForbiddenPage />,
+      element: (
+        <AppLayout>
+          <ForbiddenPage />
+        </AppLayout>
+      ),
     },
     {
       path: '/profile',
       element: (
-        <AuthProvider>
-          <ProfilePage />
-        </AuthProvider>
+        <AppLayout>
+          <AuthProvider>
+            <ProfilePage />
+          </AuthProvider>
+        </AppLayout>
       ),
     },
     {
       path: '/employees',
       element: (
-        <AuthProvider
-          protectionUser={[Roles.Owner]}
-          protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
-        >
-          <EmployeesPage />
-        </AuthProvider>
+        <AppLayout>
+          <AuthProvider
+            protectionUser={[Roles.Owner]}
+            protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
+          >
+            <EmployeesPage />
+          </AuthProvider>
+        </AppLayout>
       ),
     },
     {
       path: '/objects',
       element: (
-        <AuthProvider>
-          <ObjectsPage />
-        </AuthProvider>
+        <AppLayout>
+          <AuthProvider>
+            <ObjectsPage />
+          </AuthProvider>
+        </AppLayout>
       ),
     },
     {
       path: '/announcements',
       element: (
-        <AuthProvider protectionUser={[Roles.Employee]}>
-          <AnnouncementsPage />
-        </AuthProvider>
+        <AppLayout>
+          <AuthProvider protectionUser={[Roles.Employee]}>
+            <AnnouncementsPage />
+          </AuthProvider>
+        </AppLayout>
       ),
     },
     {
       path: '/chats',
       element: (
-        <AuthProvider>
-          <ChatsPage />
-        </AuthProvider>
+        <AppLayout>
+          <AuthProvider>
+            <ChatsPage />
+          </AuthProvider>
+        </AppLayout>
       ),
     },
     {
       path: '/favorites',
       element: (
-        <AuthProvider>
-          <FavoritesPage />
-        </AuthProvider>
+        <AppLayout>
+          <AuthProvider>
+            <FavoritesPage />
+          </AuthProvider>
+        </AppLayout>
       ),
     },
     {
       path: '/company',
       element: (
-        <AuthProvider
-          protectionUser={[Roles.Owner]}
-          protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
-        >
-          <MyCompanyPage />
-        </AuthProvider>
+        <AppLayout>
+          <AuthProvider
+            protectionUser={[Roles.Owner]}
+            protectionEmployee={[RolesEmployee.Manager, RolesEmployee.Brigadier]}
+          >
+            <MyCompanyPage />
+          </AuthProvider>
+        </AppLayout>
       ),
     },
   ]);
 
   return (
     <Suspense fallback={<FullScreenLoader />}>
-      <ScrollToTop>
-        <AppLayout>{routes}</AppLayout>
-      </ScrollToTop>
+      <ScrollToTop>{routes}</ScrollToTop>
     </Suspense>
   );
 };

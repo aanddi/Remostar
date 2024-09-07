@@ -10,6 +10,7 @@ import AppProviders from '@common/providers';
 import them from '@styles/app-them';
 
 import { ConfigProvider } from 'antd';
+import ruRU from 'antd/locale/ru_RU';
 
 import App from './App';
 import { persistor, store } from './store';
@@ -21,12 +22,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ConfigProvider theme={them}>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <PersistGate loading={null} persistor={persistor} />
-          <BrowserRouter>
-            <AppProviders>
-              <App />
-            </AppProviders>
-          </BrowserRouter>
+          <PersistGate loading={null} persistor={persistor}>
+            <BrowserRouter>
+              <AppProviders>
+                <ConfigProvider locale={ruRU}>
+                  <App />
+                </ConfigProvider>
+              </AppProviders>
+            </BrowserRouter>
+          </PersistGate>
         </QueryClientProvider>
       </Provider>
     </ConfigProvider>

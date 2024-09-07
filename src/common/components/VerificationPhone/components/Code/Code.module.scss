@@ -1,14 +1,16 @@
+@import '/src/styles/variables.scss';
+
 .form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  position: relative;
+
+  .textPhone {
+    color: $gray;
+  }
 
   .back {
     min-width: 35px !important;
-    position: absolute;
-    top: -120px;
-    left: 0;
     border-radius: 100px;
   }
 }

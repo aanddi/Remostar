@@ -19,6 +19,7 @@ const Input = forwardRef<InputRef, IInputProps>(
     const field = useMemo(
       () => (
         <UIInput
+          // allowClear={{ clearIcon: <IoCloseCircle size={17} /> }}
           type={type}
           ref={ref}
           status={error && 'error'}

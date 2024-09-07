@@ -1,0 +1,16 @@
+.layout {
+  background-color: #F1F5F7;
+  min-height: 100vh;
+
+  .container {
+    width: 650px;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

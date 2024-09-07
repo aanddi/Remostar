@@ -7,6 +7,7 @@ import {
   IOtpVerification,
   IOtpVerificationResponse,
 } from './types/otp.type';
+import { IRegisterContractors, IRegisterOwner } from './types/register.type';
 import { IAuthResponse } from './types/user.type';
 
 const AuthServices = {
@@ -20,6 +21,16 @@ const AuthServices = {
     return response.data;
   },
 
+  async registerOwner(body: IRegisterOwner) {
+    const response = await apiInstance.post<IAuthResponse>('/auth/register/owner', body);
+    return response.data;
+  },
+
+  async registerContactor(body: IRegisterContractors) {
+    const response = await apiInstance.post<IAuthResponse>('/auth/register/conractor', body);
+    return response.data;
+  },
+
   async getNewTokens(currentRefreshToken: string | null) {
     const response = await apiInstance.post<IAuthResponse>('/auth/tokens/new', {
       refreshToken: currentRefreshToken,
@@ -27,9 +38,9 @@ const AuthServices = {
     return response.data;
   },
 
-  async otpGenerate(body: IOtpGenerate, existing: boolean) {
+  async otpGenerate(body: IOtpGenerate, typeVerification: string) {
     const response = await apiInstance.post<IOtpGenerateResponse>(
-      `/auth/otp/generate?user=${existing ? 'existing' : 'no-existing'}`,
+      `/auth/otp/generate?type=${typeVerification}`,
       body,
     );
     return response.data;
