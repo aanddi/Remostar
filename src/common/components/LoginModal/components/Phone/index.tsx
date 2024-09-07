@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 
-import { IOtpGenerateResponse } from '@common/api/services/auth/types/otp.type';
+import { ILoginPhone } from '@common/api/services/auth/types/login.type';
+import { VerificationPhone } from '@common/components';
+import { useModalLogin } from '@common/hooks';
 
-import PhoneNumber from './components/PhoneNumber';
-import Verification from './components/Verification/Verification';
+import styles from './Phone.module.scss';
+
+import { useLoginPhone } from '../../model';
 
 const PhoneLogin = () => {
-  const [responseGenerateOtp, setResponseGenerateOtp] = useState<IOtpGenerateResponse | null>(null);
+  const { handleCloseModal } = useModalLogin();
+
+  const { mutate: login } = useLoginPhone(handleCloseModal);
+
+  const handleLogin = useCallback(
+    (data: ILoginPhone) => {
+      login(data);
+    },
+    [login],
+  );
+
   return (
-    <div>
-      {responseGenerateOtp ? (
-        <Verification
-          responseGenerateOtp={responseGenerateOtp}
-          setVerification={setResponseGenerateOtp}
-        />
-      ) : (
-        <PhoneNumber setResponseGenerateOtp={setResponseGenerateOtp} />
-      )}
+    <div className={styles.verifivation}>
+      <VerificationPhone
+        handleVerification={handleLogin}
+        typeVerification="login"
+        classNameBackButton={styles.backVerification}
+      />
     </div>
   );
 };

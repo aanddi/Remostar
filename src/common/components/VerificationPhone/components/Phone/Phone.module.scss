@@ -1,0 +1,11 @@
+.phone {
+  .title {
+    text-align: center;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+}

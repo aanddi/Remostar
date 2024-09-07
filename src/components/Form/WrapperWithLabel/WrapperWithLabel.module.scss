@@ -18,11 +18,11 @@
     pointer-events: none;
 
     transition: all 0.3s ease;
-    transform: scale(0.85) translateY(6px);
+    transform: scale(0.85) translateY(7px);
     transform-origin: left top;
 
     &.unactive {
-      transform: scale(1.15) translateY(14px);
+      transform: scale(1.15) translateY(15px);
     }
 
     &.error {
@@ -33,15 +33,15 @@
       &::after {
         content: '*';
         padding-left: 2px;
-        font-weight: 200;
+        font-weight: 500;
         color: $required-fields;
       }
     }
   }
 
-  .fieldUnActive {
-    & > * {
-      padding: 25px 15px 10px 15px !important;
-    }
-  }
+  // .fieldUnActive {
+  //   & > * {
+  //     padding: 25px 0px 0px 0px !important;
+  //   }
+  // }
 }

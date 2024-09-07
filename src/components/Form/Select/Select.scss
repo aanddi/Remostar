@@ -1,6 +1,42 @@
 @import 'src/styles/variables.scss';
+@import '../Form.scss';
+
+.ant-select.ant-select-focused {
+  .ant-select-selector {
+    border-color: transparent !important;
+    position: static !important;
+    padding: 0 !important;
+  }
+}
 
 .select {
+  background-color: $blue-light;
+  border: 1px solid darken($blue-light, 3%) !important;
+  height: 56px;
+  font-size: 16px !important;
+  border-radius: 7px !important;
+
+  .ant-select-selector {
+    background: inherit !important;
+    padding: 0 !important;
+    font-size: 16px;
+  }
+
+  .ant-select-selection-search {
+    inset-inline-start: 0 !important;
+    inset-inline-end: 0 !important;
+  }
+
+  .ant-select-selection-item {
+    padding: 16px 0px 0px 15px !important;
+  }
+
+  &:hover {
+    border-color: lighten($primary-dark, 55%) !important;
+    cursor: initial;
+    transition: all 0.2s ease-in-out;
+  }
+
   .ant-select-arrow {
     transition: all 0.4s ease;
   }
@@ -11,5 +47,9 @@
 
   &.ant-select.ant-select-open .ant-select-arrow {
     transform: rotate(180deg);
+  }
+
+  .ant-select-dropdown {
+    width: 100% !important;
   }
 }

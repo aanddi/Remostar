@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-import { useAppDispatch } from '@common/hooks';
-import { getAuthTokens } from '@common/utils';
-
-import { loginUser, logoutUser } from '@store/slices/user.slice';
+import { deleteAuthTokens, getAuthTokens, setAuthTokens } from '@common/utils';
 
 import AuthServices from '../services/auth';
 
@@ -33,17 +30,20 @@ apiInstance.interceptors.response.use(
   (config) => config,
   async (error) => {
     const originalRequest = error.config;
-    const dispatch = useAppDispatch();
+
     if (error.response.status === 401 && error.config && !error.config.isRetry) {
       originalRequest.isRetry = true;
       try {
         const { refreshToken } = getAuthTokens();
         const response = await AuthServices.getNewTokens(refreshToken);
-        dispatch(loginUser(response));
+        deleteAuthTokens();
+        setAuthTokens(response.accessToken, response.refreshToken);
+        // обновление юзера ????
       } catch (err: any) {
         console.error('error', err);
         if (err.response.status === 401 || err.response.status === 400) {
-          dispatch(logoutUser());
+          deleteAuthTokens();
+          localStorage.removeItem('user');
         }
       }
       return apiInstance.request(originalRequest).catch(() => {
